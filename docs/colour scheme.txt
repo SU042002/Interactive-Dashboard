@@ -1,0 +1,9 @@
+Blue Colour = #121e48
+Light Blue Colour = #2f3a5f
+
+Background Grey = #dedcdc
+
+Light Blue/Greenish Colour = #65c7b6
+Orange Colour = #f15b35
+
+Grey Colour = #bec5da
