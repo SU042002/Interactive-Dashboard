@@ -106,3 +106,131 @@ function createTop5NoShowsByNeighbourhoodChart(neighbourhoods, noShows) {
         }
     });
 }
+
+// Function to create a horizontal bar chart
+function getTotalPatientsWithConditionsChart(diabetes, hypertension, alcoholism, handicap) {
+    const ctx = document.getElementById('totalPatientsWithConditions').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Diabetes', 'Hypertension', 'Alcoholism', 'Handicap'],
+            datasets: [{
+                label: 'Number of Patients',
+                data: [diabetes, hypertension, alcoholism, handicap],
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            indexAxis: 'y', // Makes the bar chart horizontal
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Patients'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Condition'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Patients with Conditions'
+                }
+            }
+        }
+    });
+}
+
+function getAppointmentsOverMonthsCharts(months, totals) {
+    const ctx = document.getElementById('appointmentsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Total Appointments',
+                data: totals,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Appointments'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Appointments Over Months'
+                }
+            }
+        }
+    });
+}
+
+function getAppointmentsByAgeGroupCharts(ageGroups, totals) {
+    const ctx = document.getElementById('ageGroupChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ageGroups,
+            datasets: [{
+                label: 'Total Appointments',
+                data: totals,
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Appointments'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Age Group'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Appointments by Patient Age Group'
+                }
+            }
+        }
+    });
+}
+

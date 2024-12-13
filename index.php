@@ -63,11 +63,11 @@ $db = new Database();
         <!--        Dashboard Content-->
         <div class="col-sm-10">
 
-            <div class="row" style="padding-top: 40px">
-                <div class="col-sm-11 mx-auto" style="justify-content: center; background-color: white; border-radius: 5px">
-                    <p style="font-size: 30px; font-family: Arial,serif; color: #151f47"; align="center">This dashboard provides data-driven insights into no-show statistics, examining patient demographics, medical problems, appointment trends, and the efficacy of reminders to improve clinic operations and patient outcomes.</p>
-                </div>
-            </div>
+<!--            <div class="row" style="padding-top: 40px">-->
+<!--                <div class="col-sm-11 mx-auto" style="justify-content: center; background-color: white; border-radius: 5px">-->
+<!--                    <p style="font-size: 30px; font-family: Arial,serif; color: #151f47"; align="center">This dashboard provides data-driven insights into no-show statistics, examining patient demographics, medical problems, appointment trends, and the efficacy of reminders to improve clinic operations and patient outcomes.</p>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="row">
 
@@ -99,8 +99,6 @@ $db = new Database();
 
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="col-sm-4" style="padding-top: 40px">
@@ -173,6 +171,99 @@ $db = new Database();
 
             <div class="row">
 
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <p style="font-size: 20px; color: #151f47">Total Patients with conditions</p>
+                                    <?php
+                                    $totalPatientsWithConditions = $db->getTotalPatientsWithAnyCondition();
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatientsWithConditions</h1>";
+                                    ?>
+                                </div>
+
+                                <div class="col-sm-7">
+                                    <canvas id="totalPatientsWithConditions" width="100" height="100"></canvas>
+
+                                    <?php
+                                        $getTotalPatientsWithConditions = $db->getTotalPatientsWithConditions();
+
+                                        $diabetes = $getTotalPatientsWithConditions[0]['totalDiabetes'];
+                                        $hypertension = $getTotalPatientsWithConditions[0]['totalHypertension'];
+                                        $alcoholism = $getTotalPatientsWithConditions[0]['totalAlcoholism'];
+                                        $handicap = $getTotalPatientsWithConditions[0]['totalHandicap'];
+                                    ?>
+
+                                    <script>
+                                        getTotalPatientsWithConditionsChart(<?php echo $diabetes; ?>, <?php echo $hypertension; ?>, <?php echo $alcoholism; ?>, <?php echo $handicap; ?>);
+                                    </script>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <canvas id="appointmentsChart" width="400" height="200"></canvas>
+                                    <?php
+                                        $getAppointmentsOverMonths = $db->getAppointmentsOverMonths();
+
+                                        $months = [];
+                                        $totals = [];
+
+                                        foreach ($getAppointmentsOverMonths as $item) {
+                                            $months[] = $item['_id'];
+                                            $totals[] = $item['totalAppointments'];
+                                        }
+                                    ?>
+
+                                    <script>
+                                        getAppointmentsOverMonthsCharts(<?php echo json_encode($months); ?>, <?php echo json_encode($totals); ?>);
+                                    </script>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <canvas id="ageGroupChart" width="400" height="200"></canvas>
+                                    <?php
+                                        $appointmentsByAgeGroup = $db->getAppointmentsByAgeGroup();
+                                        $ageGroups = [];
+                                        $totals = [];
+
+                                        foreach ($appointmentsByAgeGroup as $item) {
+                                            $ageGroups[] = $item['_id'];
+                                            $totals[] = $item['totalAppointments'];
+                                        }
+                                    ?>
+
+                                    <script>
+                                        getAppointmentsByAgeGroupCharts(<?php echo json_encode($ageGroups); ?>, <?php echo json_encode($totals); ?>);
+                                    </script>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
