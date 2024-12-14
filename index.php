@@ -20,7 +20,7 @@ $db = new Database();
 
     <div class="row">
         <!--    Sidebar for navigation-->
-        <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="height: 100vh; background-color: #151f47">
+        <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <div class="logo" style="padding-right: 14px">
                     <img src="img/logo.png" alt="Logo" width="40" height="32" class="me-2">
@@ -36,19 +36,19 @@ $db = new Database();
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="patients.php" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>
                         Patients
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="appointments.php" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
                         Appointments
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="neighbourhoods.php" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#neighbourhoods"></use></svg>
                         Neighbourhoods
                     </a>
@@ -63,11 +63,11 @@ $db = new Database();
         <!--        Dashboard Content-->
         <div class="col-sm-10">
 
-<!--            <div class="row" style="padding-top: 40px">-->
-<!--                <div class="col-sm-11 mx-auto" style="justify-content: center; background-color: white; border-radius: 5px">-->
-<!--                    <p style="font-size: 30px; font-family: Arial,serif; color: #151f47"; align="center">This dashboard provides data-driven insights into no-show statistics, examining patient demographics, medical problems, appointment trends, and the efficacy of reminders to improve clinic operations and patient outcomes.</p>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="row" style="padding-top: 40px">-->
+            <!--                <div class="col-sm-11 mx-auto" style="justify-content: center; background-color: white; border-radius: 5px">-->
+            <!--                    <p style="font-size: 30px; font-family: Arial,serif; color: #151f47"; align="center">This dashboard provides data-driven insights into no-show statistics, examining patient demographics, medical problems, appointment trends, and the efficacy of reminders to improve clinic operations and patient outcomes.</p>-->
+            <!--                </div>-->
+            <!--            </div>-->
 
             <div class="row">
 
@@ -87,8 +87,8 @@ $db = new Database();
                                 <div class="col-sm-7">
                                     <canvas id="genderChart" width="100" height="100"></canvas>
                                     <?php
-                                        $totalMales = $db->getTotalMales();
-                                        $totalFemales = $db->getTotalFemales();
+                                    $totalMales = $db->getTotalMales();
+                                    $totalFemales = $db->getTotalFemales();
                                     ?>
 
                                     <script>
@@ -129,7 +129,6 @@ $db = new Database();
 
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col-sm-4" style="padding-top: 40px">
@@ -188,12 +187,12 @@ $db = new Database();
                                     <canvas id="totalPatientsWithConditions" width="100" height="100"></canvas>
 
                                     <?php
-                                        $getTotalPatientsWithConditions = $db->getTotalPatientsWithConditions();
+                                    $getTotalPatientsWithConditions = $db->getTotalPatientsWithConditions();
 
-                                        $diabetes = $getTotalPatientsWithConditions[0]['totalDiabetes'];
-                                        $hypertension = $getTotalPatientsWithConditions[0]['totalHypertension'];
-                                        $alcoholism = $getTotalPatientsWithConditions[0]['totalAlcoholism'];
-                                        $handicap = $getTotalPatientsWithConditions[0]['totalHandicap'];
+                                    $diabetes = $getTotalPatientsWithConditions[0]['totalDiabetes'];
+                                    $hypertension = $getTotalPatientsWithConditions[0]['totalHypertension'];
+                                    $alcoholism = $getTotalPatientsWithConditions[0]['totalAlcoholism'];
+                                    $handicap = $getTotalPatientsWithConditions[0]['totalHandicap'];
                                     ?>
 
                                     <script>
@@ -214,15 +213,15 @@ $db = new Database();
                                 <div class="col-sm-12">
                                     <canvas id="appointmentsChart" width="400" height="200"></canvas>
                                     <?php
-                                        $getAppointmentsOverMonths = $db->getAppointmentsOverMonths();
+                                    $getAppointmentsOverMonths = $db->getAppointmentsOverMonths();
 
-                                        $months = [];
-                                        $totals = [];
+                                    $months = [];
+                                    $totals = [];
 
-                                        foreach ($getAppointmentsOverMonths as $item) {
-                                            $months[] = $item['_id'];
-                                            $totals[] = $item['totalAppointments'];
-                                        }
+                                    foreach ($getAppointmentsOverMonths as $item) {
+                                        $months[] = $item['_id'];
+                                        $totals[] = $item['totalAppointments'];
+                                    }
                                     ?>
 
                                     <script>
@@ -244,14 +243,14 @@ $db = new Database();
                                 <div class="col-sm-12">
                                     <canvas id="ageGroupChart" width="400" height="200"></canvas>
                                     <?php
-                                        $appointmentsByAgeGroup = $db->getAppointmentsByAgeGroup();
-                                        $ageGroups = [];
-                                        $totals = [];
+                                    $appointmentsByAgeGroup = $db->getAppointmentsByAgeGroup();
+                                    $ageGroups = [];
+                                    $totals = [];
 
-                                        foreach ($appointmentsByAgeGroup as $item) {
-                                            $ageGroups[] = $item['_id'];
-                                            $totals[] = $item['totalAppointments'];
-                                        }
+                                    foreach ($appointmentsByAgeGroup as $item) {
+                                        $ageGroups[] = $item['_id'];
+                                        $totals[] = $item['totalAppointments'];
+                                    }
                                     ?>
 
                                     <script>
@@ -267,7 +266,95 @@ $db = new Database();
 
             </div>
 
+            <div class="row">
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <canvas id="getNoShowRatesByGenderChart" width="400" height="200"></canvas>
+                                    <?php
+                                    $getNoShowRatesByGender = $db->getNoShowRatesByGender();
+                                    $gender = [];
+                                    $rate = [];
+
+                                    foreach ($getNoShowRatesByGender as $item) {
+                                        $gender[] = $item['Gender'];
+                                        $rate[] = $item['NoShowRate'];
+                                    }
+                                    ?>
+                                    <script>
+                                        getNoShowRatesByGenderCharts(<?php echo json_encode($gender); ?>, <?php echo json_encode($rate); ?>);
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <canvas id="getShowUpRatesBySMSCharts" width="400" height="200"></canvas>
+                                    <?php
+                                    $showUpRates = $db->getShowUpRatesBySMS();
+                                    $smsCategories = [];
+                                    $showUpRatesData = [];
+
+                                    foreach ($showUpRates as $item) {
+                                        $smsCategories[] = $item['SMS_Received'];
+                                        $showUpRatesData[] = $item['ShowUpRate'];
+                                    }
+                                    ?>
+                                    <script>
+                                        createShowUpRateChart(<?php echo json_encode($smsCategories); ?>, <?php echo json_encode($showUpRatesData); ?>);
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <canvas id="noShowScholarshipChart" width="400" height="200"></canvas>
+                                    <?php
+                                    $noShowRatesByScholarship = $db->getNoShowRatesByScholarship();
+
+                                    $scholarshipCategories = [];
+                                    $noShowRates = [];
+
+                                    foreach ($noShowRatesByScholarship as $item) {
+                                        $scholarshipCategories[] = $item['Scholarship'];
+                                        $noShowRates[] = $item['NoShowRate'];
+                                    }
+                                    ?>
+
+
+                                    <script>
+                                        createNoShowScholarshipChart(<?php echo json_encode($scholarshipCategories); ?>, <?php echo json_encode($noShowRates); ?>);
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
         </div>
+            <footer style="padding-top: 40px"></footer>
+
+    </div>
     </div>
 
 
@@ -277,5 +364,7 @@ $db = new Database();
 
 <script src="chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>

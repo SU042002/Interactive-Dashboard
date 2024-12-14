@@ -180,6 +180,83 @@ class Database
         return iterator_to_array($result);
     }
 
+    public function getNoShowRatesByGender() {
+        $appointments = $this->database->Appointments;
+
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => '$Patient.Gender',
+                    'TotalAppointments' => ['$sum' => 1],
+                    'MissedAppointments' => ['$sum' => ['$cond' => [['$eq' => ['$Showed_up', false]], 1, 0]]]
+                ]
+            ],
+            [
+                '$project' => [
+                    '_id' => 0,
+                    'Gender' => '$_id',
+                    'NoShowRate' => [
+                        '$round' => [['$multiply' => [['$divide' => ['$MissedAppointments', '$TotalAppointments']], 100]], 2]
+                    ]
+                ]
+            ]
+        ];
+
+        $result = $appointments->aggregate($pipeline);
+        return iterator_to_array($result);
+    }
+
+    public function getShowUpRatesBySMS() {
+        $appointments = $this->database->Appointments;
+
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => '$SMS_received',
+                    'TotalAppointments' => ['$sum' => 1],
+                    'ShowedUpCount' => ['$sum' => ['$cond' => [['$eq' => ['$Showed_up', true]], 1, 0]]]
+                ]
+            ],
+            [
+                '$project' => [
+                    '_id' => 0,
+                    'SMS_Received' => ['$cond' => [['$eq' => ['$_id', true]], 'Received SMS', 'Did Not Receive SMS']],
+                    'ShowUpRate' => [
+                        '$round' => [['$multiply' => [['$divide' => ['$ShowedUpCount', '$TotalAppointments']], 100]], 2]
+                    ]
+                ]
+            ]
+        ];
+
+        $result = $appointments->aggregate($pipeline);
+        return iterator_to_array($result);
+    }
+
+    public function getNoShowRatesByScholarship() {
+        $appointments = $this->database->Appointments;
+
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => '$Patient.Scholarship',
+                    'TotalAppointments' => ['$sum' => 1],
+                    'MissedAppointments' => ['$sum' => ['$cond' => [['$eq' => ['$Showed_up', false]], 1, 0]]]
+                ]
+            ],
+            [
+                '$project' => [
+                    '_id' => 0,
+                    'Scholarship' => ['$cond' => [['$eq' => ['$_id', true]], 'With Scholarship', 'Without Scholarship']],
+                    'NoShowRate' => [
+                        '$round' => [['$multiply' => [['$divide' => ['$MissedAppointments', '$TotalAppointments']], 100]], 2]
+                    ]
+                ]
+            ]
+        ];
+
+        $result = $appointments->aggregate($pipeline);
+        return iterator_to_array($result);
+    }
 
 }
 
