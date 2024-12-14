@@ -21,42 +21,44 @@ $db = new Database();
     <div class="row">
         <!--    Sidebar for navigation-->
         <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <div class="logo" style="padding-right: 14px">
-                    <img src="img/logo.png" alt="Logo" width="40" height="32" class="me-2">
-                </div>
-                <span class="fs-4">Clinic: Interactive Dashboard</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link active" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#overview"></use></svg>
-                        Overview
-                    </a>
-                </li>
-                <li>
-                    <a href="patients.php" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>
-                        Patients
-                    </a>
-                </li>
-                <li>
-                    <a href="appointments.php" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
-                        Appointments
-                    </a>
-                </li>
-                <li>
-                    <a href="neighbourhoods.php" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#neighbourhoods"></use></svg>
-                        Neighbourhoods
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
-            <p>Created by Sameer Uddin (20004135)</p>
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <div class="logo" style="padding-right: 14px">
+                        <img src="img/logo.png" alt="Logo" width="40" height="32" class="me-2">
+                    </div>
+                    <span class="fs-4">Clinic: Interactive Dashboard</span>
+                </a>
+                <hr>
+                <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
+                <p>Created by Sameer Uddin (20004135)</p>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link active" aria-current="page">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#overview"></use></svg>
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="patients.php" class="nav-link text-white">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>
+                            Patients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="appointments.php" class="nav-link text-white">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
+                            Appointments
+                        </a>
+                    </li>
+                    <li>
+                        <a href="neighbourhoods.php" class="nav-link text-white">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#neighbourhoods"></use></svg>
+                            Neighbourhoods
+                        </a>
+                    </li>
+                </ul>
+
+
 
         </div>
 
