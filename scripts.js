@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 console.log('Filtered data:', data);
                 displayPatients(data);
+                document.getElementById('resultCount').textContent = `Results: ${data.length}`;
             })
             .catch(error => {
                 console.error('Error:', error);

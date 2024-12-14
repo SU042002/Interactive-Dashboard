@@ -68,7 +68,16 @@ $db = new Database();
                 <div class="col-sm-9 mx-auto" style="padding-top: 40px">
                     <div class="card">
                         <div class="card-body">
-                            <h4>Filters</h4>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>Filters</h5>
+                                </div>
+                                <div class="col-sm-6 d-flex justify-content-end">
+                                    <span>
+                                        <span class="badge text-bg-secondary" id="resultCount">Results: 0</span>
+                                    </span>
+                                </div>
+                            </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2">
