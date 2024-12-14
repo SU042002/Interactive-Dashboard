@@ -64,37 +64,114 @@ $db = new Database();
         <!--        Dashboard Content-->
         <div class="col-sm-10">
 
-            <!--            <div class="row" style="padding-top: 40px">-->
-            <!--                <div class="col-sm-11 mx-auto" style="justify-content: center; background-color: white; border-radius: 5px">-->
-            <!--                    <p style="font-size: 30px; font-family: Arial,serif; color: #151f47"; align="center">This dashboard provides data-driven insights into no-show statistics, examining patient demographics, medical problems, appointment trends, and the efficacy of reminders to improve clinic operations and patient outcomes.</p>-->
-            <!--                </div>-->
-            <!--            </div>-->
+            <div class="row">
+                <div class="col-sm-4 mx-auto" style="padding-top: 40px">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input type="text" id="searchInput" class="form-control rounded" placeholder="Enter PatientID" aria-label="Search" aria-describedby="search-addon" />
+                                <button type="button" id="searchButton" class="btn btn-outline-primary" data-mdb-ripple-init>Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
-
-                <div class="col-sm-4" style="padding-top: 40px">
-
-                    <div class="card" style="border-radius: 5px">
+                <div class="col-sm-9 mx-auto" style="padding-top: 40px">
+                    <div class="card">
                         <div class="card-body">
+                            <h4>Filters</h4>
+                            <hr>
                             <div class="row">
-                                <div class="col-sm-5">
-                                    <p style="font-size: 20px; color: #151f47">Total Patients</p>
-                                    <?php
-                                    $totalPatients = $db->getTotalPatients();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>";
-                                    ?>
+                                <div class="col-sm-2">
+                                    <h6>Medical Condition</h6>
+                                    <hr>
+                                    <form>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="diabetesCheckbox">
+                                            <span class="form-check-label">Diabetes</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="hypertensionCheckbox">
+                                            <span class="form-check-label">Hypertension</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="alcoholismCheckbox">
+                                            <span class="form-check-label">Alcoholism</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="handcapCheckbox">
+                                            <span class="form-check-label">Handicap</span>
+                                        </label>
+                                    </form>
                                 </div>
 
-                                <div class="col-sm-7">
-                                    <canvas id="genderChart" width="100" height="100"></canvas>
-                                    <?php
-                                    $totalMales = $db->getTotalMales();
-                                    $totalFemales = $db->getTotalFemales();
-                                    ?>
+                                <div class="col-sm-3">
+                                    <h6>Age</h6>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>Min</label>
+                                            <input type="number" class="form-control" id="ageMin">
+                                        </div>
+                                        <div class="form-group col-md-6 text-right">
+                                            <label>Max</label>
+                                            <input type="number" class="form-control" id="ageMax">
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <script>
-                                        createGenderChart(<?php echo $totalMales; ?>, <?php echo $totalFemales; ?>);
-                                    </script>
+                                <div class="col-sm-2">
+                                    <h6>Gender</h6>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender" value="M">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Male
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender" value="F">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Female
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <h6>Scholarship</h6>
+                                    <hr>
+                                    <label><input class="form-check-input" type="checkbox" id="scholarshipTrue"> Scholarship (True)</label>
+                                    <label><input class="form-check-input" type="checkbox" id="scholarshipFalse"> Scholarship (False)</label>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <h6>Neighbourhood</h6>
+                                    <hr>
+                                    <select class="form-select" id="neighbourhoodSelect">
+                                        <option value="All">All</option>
+                                        <?php
+                                        $neighbourhoods = $db->getNeighbourhoods();
+                                        foreach ($neighbourhoods as $neighbourhood) {
+                                            echo "<option value='$neighbourhood'>$neighbourhood</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-12 justify-content-end d-sm-flex">
+                                    <button type="button" id="applyFilters" class="btn btn-primary">Apply Filters</button>
                                 </div>
                             </div>
 
@@ -102,71 +179,31 @@ $db = new Database();
                     </div>
                 </div>
 
-                <div class="col-sm-4" style="padding-top: 40px">
-
-                    <div class="card" style="border-radius: 5px">
+            <div class="row">
+                <div class="col-sm-12 mx-auto" style="padding-top: 40px">
+                    <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <p style="font-size: 20px; color: #151f47">Total Appointments</p>
-                                    <?php
-                                    $totalAppointments = $db->getTotalAppointments();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalAppointments</h1>";
-                                    ?>
-                                </div>
-                                <div class="col-sm-7">
-                                    <canvas id="appointmentChart" width="100" height="100"></canvas>
-                                    <?php
-                                    $totalNoShow = $db->getTotalNoShows();
-                                    $totalShow = $db->getTotalShows();
-                                    ?>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">PatientID</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Neighbourhood</th>
+                                    <th scope="col">Alcoholism</th>
+                                    <th scope="col">Handicap</th>
+                                    <th scope="col">Hypertension</th>
+                                    <th scope="col">Diabetes</th>
+                                    <th scope="col">Scholarship</th>
+                                </tr>
+                                </thead>
+                                <tbody id="patientTableBody">
 
-
-                                    <script>
-                                        createAppointmentChart(<?php echo $totalNoShow; ?>, <?php echo $totalShow; ?>);
-                                    </script>
-                                </div>
-                            </div>
-
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-sm-4" style="padding-top: 40px">
-                    <div class="card" style="border-radius: 5px">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <p style="font-size: 20px; color: #151f47">Total Neighbourhoods</p>
-                                    <?php
-                                    $totalNeighbourhoods = $db->getTotalNeighbourhoods();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalNeighbourhoods</h1>";
-                                    ?>
-                                </div>
-                                <div class="col-sm-7">
-                                    <canvas id="getTop5NoShowsByNeighbourhood" width="100" height="100"></canvas>
-
-                                    <?php
-                                    $top5NoShowsByNeighbourhood = $db->getTop5NoShowsByNeighbourhood();
-                                    $neighbourhoods = [];
-                                    $noShows = [];
-
-                                    foreach ($top5NoShowsByNeighbourhood as $item) {
-                                        $neighbourhoods[] = $item['_id'];
-                                        $noShows[] = $item['NoShows'];
-                                    }
-                                    ?>
-
-                                    <script>
-                                        createTop5NoShowsByNeighbourhoodChart(<?php echo json_encode($neighbourhoods); ?>, <?php echo json_encode($noShows); ?>);
-                                    </script>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <footer style="padding-top: 40px"></footer>
@@ -177,9 +214,8 @@ $db = new Database();
 
 
 </div>
-
-
 <script src="chart.js"></script>
+<script src="scripts.js?v=1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 

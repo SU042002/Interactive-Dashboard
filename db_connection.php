@@ -5,7 +5,7 @@ use MongoDB\Client;
 
 class Database
 {
-    private $database;
+    public $database;
 
     public function __construct()
     {
@@ -256,6 +256,47 @@ class Database
 
         $result = $appointments->aggregate($pipeline);
         return iterator_to_array($result);
+    }
+
+    public function getPatientById($patientId) {
+        $patients = $this->database->Patients;
+
+        // Query the database for the specific PatientID
+        $query = ['PatientId' => intval($patientId)];
+
+        // Fetch the first matching document
+        $result = $patients->findOne($query);
+
+        return $result ? $result : null;
+    }
+
+    public function getNeighbourhoods() {
+        $patients = $this->database->Patients;
+
+        // Use aggregation to get distinct neighbourhoods
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => null,
+                    'neighbourhoods' => ['$addToSet' => '$Neighbourhood']
+                ]
+            ],
+            [
+                '$unwind' => '$neighbourhoods'
+            ],
+            [
+                '$sort' => ['neighbourhoods' => 1] // Sort alphabetically
+            ]
+        ];
+
+        $result = $patients->aggregate($pipeline);
+        $neighbourhoods = [];
+
+        foreach ($result as $item) {
+            $neighbourhoods[] = $item['neighbourhoods'];
+        }
+
+        return $neighbourhoods;
     }
 
 }
