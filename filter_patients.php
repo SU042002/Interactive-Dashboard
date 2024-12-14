@@ -5,8 +5,6 @@ header('Content-Type: application/json');
 
 $filters = json_decode(file_get_contents('php://input'), true);
 
-error_log('Filters received: ' . print_r($filters, true));
-
 $db = new Database();
 $patients = $db->database->Patients;
 
@@ -45,14 +43,11 @@ if ($filters['ScholarshipTrue'] && !$filters['ScholarshipFalse']) {
 }
 
 // Neighbourhood Filter
-if (!empty($filters['Neighbourhood']) && $filters['Neighbourhood'] !== 'All') {
-    $query['Patient.Neighbourhood'] = $filters['Neighbourhood'];
+if (!empty($filters['Neighbourhood'])) {
+    $query['Neighbourhood'] = $filters['Neighbourhood'];
 }
-
-// Log the query
-error_log('MongoDB Query: ' . print_r($query, true));
 
 // Execute the query
 $result = $patients->find($query);
 echo json_encode(iterator_to_array($result));
-?>
+
