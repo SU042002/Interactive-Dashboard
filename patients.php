@@ -80,7 +80,7 @@ $db = new Database();
                                             <span class="form-check-label">Diabetes</span>
                                         </label>
                                         <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="hipertensionCheckbox">
+                                            <input class="form-check-input" type="checkbox" id="hypertensionCheckbox">
                                             <span class="form-check-label">Hypertension</span>
                                         </label>
                                         <label class="form-check">
@@ -143,7 +143,7 @@ $db = new Database();
                                     <h6>Neighbourhood</h6>
                                     <hr>
                                     <select class="form-select" id="neighbourhoodSelect">
-                                        <option value="All">All</option>
+                                        <option value="">All</option>
                                         <?php
                                         $neighbourhoods = $db->getNeighbourhoods();
                                         foreach ($neighbourhoods as $neighbourhood) {
@@ -201,6 +201,7 @@ $db = new Database();
 
 
 </div>
+<script src="chart.js"></script>
 <script src="scripts.js?v=1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

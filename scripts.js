@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Collect filter values
         const filters = {
             Diabetes: document.getElementById('diabetesCheckbox').checked,
-            Hipertension: document.getElementById('hipertensionCheckbox').checked,
+            Hipertension: document.getElementById('hypertensionCheckbox').checked,
             Alcoholism: document.getElementById('alcoholismCheckbox').checked,
             Handcap: document.getElementById('handcapCheckbox').checked,
             AgeMin: document.getElementById('ageMin').value,
