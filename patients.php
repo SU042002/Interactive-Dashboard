@@ -100,11 +100,11 @@ $db = new Database();
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Min</label>
-                                            <input type="number" class="form-control" id="ageMin">
+                                            <input type="number" class="form-control" id="ageMin" value="0">
                                         </div>
                                         <div class="form-group col-md-6 text-right">
                                             <label>Max</label>
-                                            <input type="number" class="form-control" id="ageMax">
+                                            <input type="number" class="form-control" id="ageMax" value="200">
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +157,11 @@ $db = new Database();
                             <hr>
 
                             <div class="row">
-                                <div class="col-sm-12 justify-content-end d-sm-flex">
+                                <div class="col-sm-6">
+                                    <button type="button" id="resetFilters" class="btn btn-warning">Reset Filters</button>
+                                </div>
+
+                                <div class="col-sm-6 justify-content-end d-sm-flex">
                                     <button type="button" id="applyFilters" class="btn btn-primary">Apply Filters</button>
                                 </div>
                             </div>
