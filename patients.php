@@ -65,19 +65,6 @@ $db = new Database();
         <div class="col-sm-10">
 
             <div class="row">
-                <div class="col-sm-4 mx-auto" style="padding-top: 40px">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" id="searchInput" class="form-control rounded" placeholder="Enter PatientID" aria-label="Search" aria-describedby="search-addon" />
-                                <button type="button" id="searchButton" class="btn btn-outline-primary" data-mdb-ripple-init>Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="col-sm-9 mx-auto" style="padding-top: 40px">
                     <div class="card">
                         <div class="card-body">
@@ -93,7 +80,7 @@ $db = new Database();
                                             <span class="form-check-label">Diabetes</span>
                                         </label>
                                         <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="hypertensionCheckbox">
+                                            <input class="form-check-input" type="checkbox" id="hipertensionCheckbox">
                                             <span class="form-check-label">Hypertension</span>
                                         </label>
                                         <label class="form-check">
@@ -214,7 +201,6 @@ $db = new Database();
 
 
 </div>
-<script src="chart.js"></script>
 <script src="scripts.js?v=1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
