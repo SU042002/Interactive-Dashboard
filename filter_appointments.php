@@ -13,6 +13,13 @@ $appointments = $db->database->Appointments;
 // Build the query dynamically
 $query = [];
 
+if (!empty($filters['dateRange'])) {
+    list($startDate, $endDate) = explode(' - ', $filters['dateRange']);
+    $startDate = new MongoDB\BSON\UTCDateTime(strtotime($startDate) * 1000);
+    $endDate = new MongoDB\BSON\UTCDateTime(strtotime($endDate) * 1000);
+    $query['AppointmentDay'] = ['$gte' => $startDate, '$lte' => $endDate];
+}
+
 // Showed Up Filter
 if (isset($filters['ShowedUp']) && $filters['ShowedUp'] !== '') {
     $query['Showed_up'] = filter_var($filters['ShowedUp'], FILTER_VALIDATE_BOOLEAN);

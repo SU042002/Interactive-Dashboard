@@ -1,3 +1,12 @@
+$(document).ready(function () {
+    $('#dateRange').daterangepicker({
+        opens: 'right',
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed.');
 
@@ -8,11 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    const dateRange = document.getElementById('dateRange').value;
+    const [startDate, endDate] = dateRange.split(' - ');
+
     applyFiltersButton.addEventListener('click', function () {
         console.log('Apply Filters button clicked!');
 
         // Collect filter values
         const filters = {
+            dateRange: document.getElementById('dateRange').value.trim(),
             ShowedUp: document.querySelector('input[name="showedUp"]:checked')?.value,
             smsReceived: document.querySelector('input[name="smsReceived"]:checked')?.value,
             dateMin: document.getElementById('dateMin').value,

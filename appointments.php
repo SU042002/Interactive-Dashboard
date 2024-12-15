@@ -90,6 +90,14 @@ $db = new Database();
 
                             <div class="row">
 
+                                <div class="col-sm-3">
+                                    <h6>Select Range for Appointment Date</h6>
+                                    <hr>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="dateRange" placeholder="Select date range">
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-2">
                                     <h6>Showed Up</h6>
                                     <hr>
