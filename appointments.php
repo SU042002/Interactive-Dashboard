@@ -72,14 +72,18 @@ $db = new Database();
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <h5>Filters</h5>
                                 </div>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="patientIdInput" placeholder="Enter Appointment ID">
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="appointmentIdInput" placeholder="Enter Appointment ID">
                                 </div>
 
-                                <div class="col-sm-4 d-flex justify-content-end">
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="patientIdInput" placeholder="Enter Patient ID">
+                                </div>
+
+                                <div class="col-sm-3 d-flex justify-content-end">
                                     <span>
                                         <span class="badge text-bg-secondary" id="resultCount">Results: 0</span>
                                     </span>

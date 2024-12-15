@@ -1,9 +1,14 @@
 $(document).ready(function () {
+    const defaultStartDate = moment('2016-04-01');
+    const defaultEndDate = moment('2016-07-01');
+
     $('#dateRange').daterangepicker({
         opens: 'right',
         locale: {
             format: 'YYYY-MM-DD'
-        }
+        },
+        startDate: defaultStartDate,
+        endDate: defaultEndDate
     });
 });
 
@@ -25,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Collect filter values
         const filters = {
+            PatientId: document.getElementById('patientIdInput').value.trim(),
+            AppointmentID: document.getElementById('appointmentIdInput').value.trim(),
             dateRange: document.getElementById('dateRange').value.trim(),
             ShowedUp: document.querySelector('input[name="showedUp"]:checked')?.value,
             smsReceived: document.querySelector('input[name="smsReceived"]:checked')?.value,
@@ -86,9 +93,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const showedUpRadios = document.querySelectorAll('input[name="showedUp"]');
         showedUpRadios.forEach(radio => radio.checked = false);
 
+        const smsReceivedRadios = document.querySelectorAll('input[name="smsReceived"]');
+        smsReceivedRadios.forEach(radio => radio.checked = false);
+
         // Reset result limit range
         document.getElementById('resultLimitRange').value = 1;
         document.getElementById('resultLimitValue').textContent = '1';
+
+        document.getElementById('dateMin').value = '';
+        document.getElementById('dateMax').value = '';
+
+        const defaultStartDate = moment('2016-04-01');
+        const defaultEndDate = moment('2016-07-01');
+
+        $('#dateRange').data('daterangepicker').setStartDate(defaultStartDate);
+        $('#dateRange').data('daterangepicker').setEndDate(defaultEndDate);
+        $('#dateRange').val(`${defaultStartDate.format('YYYY-MM-DD')} - ${defaultEndDate.format('YYYY-MM-DD')}`);
+
+        document.getElementById('appointmentIdInput').value = '';
+        document.getElementById('appointmentIdInput').textContent = 'Enter Appointment ID';
+
+        document.getElementById('patientIdInput').value = '';
+        document.getElementById('patientIdInput').textContent = 'Enter Patient ID';
+
     });
 
     document.getElementById('resultLimitRange').addEventListener('input', function () {

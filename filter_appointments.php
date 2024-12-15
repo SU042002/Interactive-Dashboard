@@ -13,6 +13,14 @@ $appointments = $db->database->Appointments;
 // Build the query dynamically
 $query = [];
 
+if (!empty($filters['PatientId'])) {
+    $query['Patient.PatientId'] = (int)$filters['PatientId'];
+}
+
+if (!empty($filters['AppointmentID'])) {
+    $query['AppointmentID'] = (int)$filters['AppointmentID'];
+}
+
 if (!empty($filters['dateRange'])) {
     list($startDate, $endDate) = explode(' - ', $filters['dateRange']);
     $startDate = new MongoDB\BSON\UTCDateTime(strtotime($startDate) * 1000);
