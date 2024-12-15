@@ -69,10 +69,14 @@ $db = new Database();
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <h5>Filters</h5>
                                 </div>
-                                <div class="col-sm-6 d-flex justify-content-end">
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="patientIdInput" placeholder="Enter Patient ID">
+                                </div>
+
+                                <div class="col-sm-4 d-flex justify-content-end">
                                     <span>
                                         <span class="badge text-bg-secondary" id="resultCount">Results: 0</span>
                                     </span>
@@ -109,11 +113,11 @@ $db = new Database();
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Min</label>
-                                            <input type="number" class="form-control" id="ageMin" value="1">
+                                            <input type="number" class="form-control" id="ageMin" min="1" max="200" value="1">
                                         </div>
                                         <div class="form-group col-md-6 text-right">
                                             <label>Max</label>
-                                            <input type="number" class="form-control" id="ageMax" value="200">
+                                            <input type="number" class="form-control" id="ageMax" min="1" max="200" value="200">
                                         </div>
                                     </div>
                                 </div>
@@ -172,9 +176,9 @@ $db = new Database();
 
                                 <div class="col-sm-4">
                                     <label for="resultLimitRange" class="form-label">
-                                        Select Results Limit: <span id="resultLimitValue">100</span>
+                                        Select Results Limit: <span id="resultLimitValue">1</span>
                                     </label>
-                                    <input type="range" class="form-range" id="resultLimitRange" min="100" max="1000" step="1" value="100">
+                                    <input type="range" class="form-range" id="resultLimitRange" min="1" max="1000" step="1" value="1">
                                 </div>
 
                                 <div class="col-sm-4 justify-content-end d-sm-flex">
@@ -224,7 +228,7 @@ $db = new Database();
 
 </div>
 <script src="chart.js"></script>
-<script src="scripts.js?v=1.0"></script>
+<script src="scripts for patients.js?v=1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 

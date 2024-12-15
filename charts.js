@@ -290,7 +290,7 @@ function getNoShowRatesByGenderCharts(gender, rate) {
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Percentage of No-Shows'
+                        text: 'No-Shows Rate (%)'
                     }
                 },
                 x: {
@@ -332,7 +332,7 @@ function createShowUpRateChart(smsCategories, showUpRatesData) {
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Percentage of Show-Ups'
+                        text: 'Show-Ups Rate (%)'
                     }
                 },
                 x: {

@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Collect filter values
         const filters = {
+            PatientId: document.getElementById('patientIdInput').value.trim(),
             Diabetes: document.getElementById('diabetesCheckbox').checked,
             Hipertension: document.getElementById('hypertensionCheckbox').checked,
             Alcoholism: document.getElementById('alcoholismCheckbox').checked,
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('handcapCheckbox').checked = false;
 
         // Reset age inputs
-        document.getElementById('ageMin').value = '0';
+        document.getElementById('ageMin').value = '1';
         document.getElementById('ageMax').value = '200';
 
         // Reset gender radio buttons
@@ -95,10 +96,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Reset neighbourhood dropdown to default (All)
         document.getElementById('neighbourhoodSelect').value = '';
+
+        // Reset result limit range
+        document.getElementById('resultLimitRange').value = 1;
+        document.getElementById('resultLimitValue').textContent = '1';
+
+        document.getElementById('patientIdInput').value = '';
+        document.getElementById('patientIdInput').textContent = 'Enter Patient ID';
+
     });
 
     document.getElementById('resultLimitRange').addEventListener('input', function () {
         document.getElementById('resultLimitValue').textContent = this.value;
     });
+
+
 });
 

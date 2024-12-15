@@ -5,13 +5,17 @@ header('Content-Type: application/json');
 
 $filters = json_decode(file_get_contents('php://input'), true);
 
-$limit = isset($filters['limit']) ? (int)$filters['limit'] : 100;
+$limit = isset($filters['limit']) ? (int)$filters['limit'] : 1;
 
 $db = new Database();
 $patients = $db->database->Patients;
 
 // Build the query dynamically
 $query = [];
+
+if (!empty($filters['PatientId'])) {
+    $query['PatientId'] = (int)$filters['PatientId'];
+}
 
 // Age Range Filter
 if (!empty($filters['AgeMin']) && !empty($filters['AgeMax'])) {
