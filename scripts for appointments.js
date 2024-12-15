@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Collect filter values
         const filters = {
             ShowedUp: document.querySelector('input[name="showedUp"]:checked')?.value,
+            smsReceived: document.querySelector('input[name="smsReceived"]:checked')?.value,
             limit: parseInt(document.getElementById('resultLimitRange').value, 10)
         };
 
@@ -48,12 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         appointments.forEach(appointment => {
+
             const row = `
                 <tr>
                     <td>${appointment.Patient.PatientId}</td>
                     <td>${appointment.AppointmentID}</td>
-                    <td>${appointment.ScheduledDay.date}</td>
-                    <td>${appointment.AppointmentDay.date}</td>
+                    <td>${appointment.ScheduledDay}</td>
+                    <td>${appointment.AppointmentDay}</td>
                     <td>${appointment.DateDiff}</td>
                     <td>${appointment.SMS_received ? 'Yes' : 'No'}</td>
                     <td>${appointment.Showed_up ? 'Yes' : 'No'}</td>

@@ -18,7 +18,20 @@ if (isset($filters['ShowedUp']) && $filters['ShowedUp'] !== '') {
     $query['Showed_up'] = filter_var($filters['ShowedUp'], FILTER_VALIDATE_BOOLEAN);
 }
 
+if (isset($filters['smsReceived']) && $filters['smsReceived'] !== '') {
+    $query['SMS_received'] = filter_var($filters['smsReceived'], FILTER_VALIDATE_BOOLEAN);
+}
+
 // Execute the query with the limit
 $result = $appointments->find($query, ['limit' => $limit])->toArray();
+
+foreach ($result as &$appointment) {
+    if (isset($appointment['ScheduledDay']) && is_object($appointment['ScheduledDay'])) {
+        $appointment['ScheduledDay'] = $appointment['ScheduledDay']->toDateTime()->format('Y-m-d');
+    }
+    if (isset($appointment['AppointmentDay']) && is_object($appointment['AppointmentDay'])) {
+        $appointment['AppointmentDay'] = $appointment['AppointmentDay']->toDateTime()->format('Y-m-d');
+    }
+}
 
 echo json_encode($result);

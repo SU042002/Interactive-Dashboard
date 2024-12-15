@@ -111,7 +111,26 @@ $db = new Database();
                                     </div>
                                 </div>
 
-
+                                <div class="col-sm-2">
+                                    <h6>SMS Received</h6>
+                                    <hr>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="smsReceived" value="true">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                True
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="smsReceived" value="false">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                False
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
