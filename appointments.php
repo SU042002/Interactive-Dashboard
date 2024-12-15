@@ -95,7 +95,7 @@ $db = new Database();
                                     <hr>
                                     <div class="col-sm-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="showStatus" value="True">
+                                            <input class="form-check-input" type="radio" name="showedUp" value="true">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 True
                                             </label>
@@ -103,7 +103,7 @@ $db = new Database();
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="showStatus" value="False">
+                                            <input class="form-check-input" type="radio" name="showedUp" value="false">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 False
                                             </label>
