@@ -22,6 +22,10 @@ if (isset($filters['smsReceived']) && $filters['smsReceived'] !== '') {
     $query['SMS_received'] = filter_var($filters['smsReceived'], FILTER_VALIDATE_BOOLEAN);
 }
 
+if (isset($filters['dateMin']) && isset($filters['dateMax']) && $filters['dateMin'] !== '' && $filters['dateMax'] !== '') {
+    $query['DateDiff'] = ['$gte' => intval($filters['dateMin']), '$lte' => intval($filters['dateMax'])];
+}
+
 // Execute the query with the limit
 $result = $appointments->find($query, ['limit' => $limit])->toArray();
 

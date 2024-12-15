@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const filters = {
             ShowedUp: document.querySelector('input[name="showedUp"]:checked')?.value,
             smsReceived: document.querySelector('input[name="smsReceived"]:checked')?.value,
+            dateMin: document.getElementById('dateMin').value,
+            dateMax: document.getElementById('dateMax').value,
             limit: parseInt(document.getElementById('resultLimitRange').value, 10)
         };
 

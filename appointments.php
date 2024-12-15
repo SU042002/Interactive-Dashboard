@@ -132,6 +132,21 @@ $db = new Database();
                                     </div>
                                 </div>
 
+                                <div class="col-sm-5">
+                                    <h6>Date Difference</h6>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>Min</label>
+                                            <input type="number" class="form-control" id="dateMin" min="0">
+                                        </div>
+                                        <div class="form-group col-md-6 text-right">
+                                            <label>Max</label>
+                                            <input type="number" class="form-control" id="dateMax" min="0">
+                                        </div>
+                                    </div>
+                                </div>
+
 
 
                             </div>
