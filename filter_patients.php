@@ -5,6 +5,8 @@ header('Content-Type: application/json');
 
 $filters = json_decode(file_get_contents('php://input'), true);
 
+$limit = isset($filters['limit']) ? (int)$filters['limit'] : 100;
+
 $db = new Database();
 $patients = $db->database->Patients;
 
@@ -48,6 +50,6 @@ if (!empty($filters['Neighbourhood'])) {
 }
 
 // Execute the query
-$result = $patients->find($query);
+$result = $patients->find($query, ['limit' => $limit])->toArray();
 echo json_encode(iterator_to_array($result));
 

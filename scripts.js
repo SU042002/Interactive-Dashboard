@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
             Gender: document.querySelector('input[name="gender"]:checked')?.value,
             ScholarshipTrue: document.getElementById('scholarshipTrue').checked,
             ScholarshipFalse: document.getElementById('scholarshipFalse').checked,
-            Neighbourhood: document.getElementById('neighbourhoodSelect').value
+            Neighbourhood: document.getElementById('neighbourhoodSelect').value,
+            limit: parseInt(document.getElementById('resultLimitRange').value)
         };
 
         console.log('Filters:', filters);
@@ -94,6 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Reset neighbourhood dropdown to default (All)
         document.getElementById('neighbourhoodSelect').value = '';
+    });
+
+    document.getElementById('resultLimitRange').addEventListener('input', function () {
+        document.getElementById('resultLimitValue').textContent = this.value;
     });
 });
 

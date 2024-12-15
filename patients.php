@@ -109,7 +109,7 @@ $db = new Database();
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Min</label>
-                                            <input type="number" class="form-control" id="ageMin" value="0">
+                                            <input type="number" class="form-control" id="ageMin" value="1">
                                         </div>
                                         <div class="form-group col-md-6 text-right">
                                             <label>Max</label>
@@ -166,12 +166,21 @@ $db = new Database();
                             <hr>
 
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <button type="button" id="resetFilters" class="btn btn-warning">Reset Filters</button>
                                 </div>
 
-                                <div class="col-sm-6 justify-content-end d-sm-flex">
+                                <div class="col-sm-4">
+                                    <label for="resultLimitRange" class="form-label">
+                                        Select Results Limit: <span id="resultLimitValue">100</span>
+                                    </label>
+                                    <input type="range" class="form-range" id="resultLimitRange" min="100" max="1000" step="1" value="100">
+                                </div>
+
+                                <div class="col-sm-4 justify-content-end d-sm-flex">
+                                    <span>
                                     <button type="button" id="applyFilters" class="btn btn-primary">Apply Filters</button>
+                                    </span>
                                 </div>
                             </div>
 
