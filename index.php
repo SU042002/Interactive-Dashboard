@@ -9,7 +9,6 @@ $db = new Database();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dashboard</title>
-    <!-- Bootstrap CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="charts.js"></script>
@@ -19,7 +18,6 @@ $db = new Database();
 <div class="container-fluid" style="background-color: #dedcdb">
 
     <div class="row">
-        <!--    Sidebar for navigation-->
         <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;">
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <div class="logo" style="padding-right: 14px">
@@ -51,24 +49,11 @@ $db = new Database();
                         </a>
                     </li>
                 </ul>
-
-
-
         </div>
 
-        <!--        Dashboard Content-->
         <div class="col-sm-10">
-
-            <!--            <div class="row" style="padding-top: 40px">-->
-            <!--                <div class="col-sm-11 mx-auto" style="justify-content: center; background-color: white; border-radius: 5px">-->
-            <!--                    <p style="font-size: 30px; font-family: Arial,serif; color: #151f47"; align="center">This dashboard provides data-driven insights into no-show statistics, examining patient demographics, medical problems, appointment trends, and the efficacy of reminders to improve clinic operations and patient outcomes.</p>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
             <div class="row">
-
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
@@ -98,7 +83,6 @@ $db = new Database();
                 </div>
 
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
@@ -115,14 +99,11 @@ $db = new Database();
                                     $totalNoShow = $db->getTotalNoShows();
                                     $totalShow = $db->getTotalShows();
                                     ?>
-
-
                                     <script>
                                         createAppointmentChart(<?php echo $totalNoShow; ?>, <?php echo $totalShow; ?>);
                                     </script>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -140,7 +121,6 @@ $db = new Database();
                                 </div>
                                 <div class="col-sm-7">
                                     <canvas id="getTop5NoShowsByNeighbourhood" width="100" height="100"></canvas>
-
                                     <?php
                                     $top5NoShowsByNeighbourhood = $db->getTop5NoShowsByNeighbourhood();
                                     $neighbourhoods = [];
@@ -151,13 +131,11 @@ $db = new Database();
                                         $noShows[] = $item['NoShows'];
                                     }
                                     ?>
-
                                     <script>
                                         createTop5NoShowsByNeighbourhoodChart(<?php echo json_encode($neighbourhoods); ?>, <?php echo json_encode($noShows); ?>);
                                     </script>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -165,9 +143,7 @@ $db = new Database();
             </div>
 
             <div class="row">
-
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
@@ -178,10 +154,8 @@ $db = new Database();
                                     echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatientsWithConditions</h1>";
                                     ?>
                                 </div>
-
                                 <div class="col-sm-7">
                                     <canvas id="totalPatientsWithConditions" width="100" height="100"></canvas>
-
                                     <?php
                                     $getTotalPatientsWithConditions = $db->getTotalPatientsWithConditions();
 
@@ -190,7 +164,6 @@ $db = new Database();
                                     $alcoholism = $getTotalPatientsWithConditions[0]['totalAlcoholism'];
                                     $handicap = $getTotalPatientsWithConditions[0]['totalHandicap'];
                                     ?>
-
                                     <script>
                                         getTotalPatientsWithConditionsChart(<?php echo $diabetes; ?>, <?php echo $hypertension; ?>, <?php echo $alcoholism; ?>, <?php echo $handicap; ?>);
                                     </script>
@@ -202,7 +175,6 @@ $db = new Database();
                 </div>
 
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
@@ -219,20 +191,16 @@ $db = new Database();
                                         $totals[] = $item['totalAppointments'];
                                     }
                                     ?>
-
                                     <script>
                                         getAppointmentsOverMonthsCharts(<?php echo json_encode($months); ?>, <?php echo json_encode($totals); ?>);
                                     </script>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
@@ -248,14 +216,11 @@ $db = new Database();
                                         $totals[] = $item['totalAppointments'];
                                     }
                                     ?>
-
                                     <script>
                                         getAppointmentsByAgeGroupCharts(<?php echo json_encode($ageGroups); ?>, <?php echo json_encode($totals); ?>);
                                     </script>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -348,11 +313,8 @@ $db = new Database();
                 </div>
 
         </div>
-
             <div class="row">
-
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
@@ -369,24 +331,19 @@ $db = new Database();
                                         $PopulationCount[] = $item['PopulationCount'];
                                     }
                                     ?>
-
-
                                     <script>
                                         createTopNeighborhoodsChart(<?php echo json_encode($neighborhoods); ?>, <?php echo json_encode($PopulationCount); ?>);
                                     </script>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4" style="padding-top: 40px">
-
                     <div class="card" style="border-radius: 5px">
                         <div class="card-body">
                             <div class="row">
-
                                 <div class="col-sm-5">
                                     <p style="font-size: 20px; color: #151f47">Total Neighbourhoods</p>
                                     <?php
@@ -406,12 +363,10 @@ $db = new Database();
                                         $showRates[] = $item['ShowRate'];
                                     }
                                     ?>
-
                                     <script>
                                         createTopShowRatesChart(<?php echo json_encode($neighborhoods); ?>, <?php echo json_encode($showRates); ?>);
                                     </script>
                                 </div>
-
                             </div>
                         </div>
                     </div>

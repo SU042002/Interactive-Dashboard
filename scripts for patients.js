@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Reset age inputs
         document.getElementById('ageMin').value = '1';
-        document.getElementById('ageMax').value = '200';
+        document.getElementById('ageMax').value = '1000';
 
         // Reset gender radio buttons
         const genderRadios = document.querySelectorAll('input[name="gender"]');

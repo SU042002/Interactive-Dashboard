@@ -106,11 +106,11 @@ $db = new Database();
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Min</label>
-                                            <input type="number" class="form-control" id="ageMin" min="1" max="200" value="1">
+                                            <input type="number" class="form-control" id="ageMin" min="1" max="1000" value="1">
                                         </div>
                                         <div class="form-group col-md-6 text-right">
                                             <label>Max</label>
-                                            <input type="number" class="form-control" id="ageMax" min="1" max="200" value="200">
+                                            <input type="number" class="form-control" id="ageMax" min="1" max="1000" value="1000">
                                         </div>
                                     </div>
                                 </div>
