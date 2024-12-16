@@ -1,6 +1,6 @@
-# Implementation of the web-based application based on the design created in coursework 001
+# Implementation of the Clinic Design
 
-Part 2 of third year coursework for the module Large Scale Data Driven Application.
+Part 2 of the 3rd year coursework for the module "Large Scale Data Driven Application".
 
 ## Problem
 Missed healthcare appointments, or no-shows, are a costly issue that disrupt clinic workflows, waste resources, and delay patient care. These missed appointments increase the workload for staff and reduce healthcare facility revenue. Factors influencing no-shows include patient demographics, medical conditions, socio-economic background, and lack of reminders. Patients with chronic conditions, such as hypertension or diabetes, are at higher risk of no-shows, particularly affecting critical healthcare services where timely care is essential.
