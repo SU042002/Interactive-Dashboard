@@ -138,4 +138,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initial fetch on page load
     fetchPatients(currentPage);
+
+    document.getElementById('resetFilters').addEventListener('click', function () {
+        // Reset checkboxes for medical conditions
+        document.getElementById('diabetesCheckbox').checked = false;
+        document.getElementById('hypertensionCheckbox').checked = false;
+        document.getElementById('alcoholismCheckbox').checked = false;
+        document.getElementById('handcapCheckbox').checked = false;
+
+        // Reset age inputs
+        document.getElementById('ageMin').value = '1';
+        document.getElementById('ageMax').value = '200';
+
+        // Reset gender radio buttons
+        const genderRadios = document.querySelectorAll('input[name="gender"]');
+        genderRadios.forEach(radio => radio.checked = false);
+
+        // Reset scholarship checkboxes
+        document.getElementById('scholarshipTrue').checked = false;
+        document.getElementById('scholarshipFalse').checked = false;
+
+        // Reset neighbourhood dropdown to default (All)
+        document.getElementById('neighbourhoodSelect').value = '';
+
+        document.getElementById('patientIdInput').value = '';
+        document.getElementById('patientIdInput').textContent = 'Enter Patient ID';
+
+    });
+
 });

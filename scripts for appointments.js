@@ -15,6 +15,9 @@ $(document).ready(function () {
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed.');
 
+    let currentPage = 1;
+    const limit = 10;
+
     const applyFiltersButton = document.getElementById('applyFilters');
 
     if (!applyFiltersButton) {
@@ -26,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const [startDate, endDate] = dateRange.split(' - ');
 
     applyFiltersButton.addEventListener('click', function () {
+        currentPage = 1; // Reset to the first page when filters are applied
+        fetchPatients(currentPage);
+    });
+
+    function fetchPatients(page = 1) {
         console.log('Apply Filters button clicked!');
 
         // Collect filter values
@@ -37,7 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
             smsReceived: document.querySelector('input[name="smsReceived"]:checked')?.value,
             dateMin: document.getElementById('dateMin').value,
             dateMax: document.getElementById('dateMax').value,
-            limit: parseInt(document.getElementById('resultLimitRange').value, 10)
+            limit: limit,
+            page: page
         };
 
         console.log('Filters:', filters);
@@ -51,14 +60,17 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 console.log('Filtered data:', data);
-                displayAppointments(data);
-                document.getElementById('resultCount').textContent = `Results: ${data.length}`;
+                displayAppointments(data.data);
+                updatePaginationControls(data.totalCount, data.currentPage, data.limit);
+                document.getElementById('resultCount').textContent = `Results: ${data.totalCount}`;
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('An error occurred while applying filters.');
             });
-    });
+    }
+
+
 
     // Function to display appointments (update this based on your table structure)
     function displayAppointments(appointments) {
@@ -87,6 +99,61 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function updatePaginationControls(totalCount, currentPage, limit) {
+        const pagination = document.getElementById('paginationControls');
+        const totalPages = Math.ceil(totalCount / limit);
+
+        let buttons = '';
+
+        if (totalPages <= 1) {
+            pagination.innerHTML = ''; // No need for pagination if only one page
+            return;
+        }
+
+        // Helper function to create a page button
+        const createPageButton = (page) => {
+            return `<button class="btn btn-sm btn-${page === currentPage ? 'primary' : 'light'} pagination-btn" data-page="${page}">${page}</button>`;
+        };
+
+        // First page button
+        if (currentPage > 3) {
+            buttons += createPageButton(1);
+            if (currentPage > 4) {
+                buttons += '<span class="btn btn-sm btn-light disabled">...</span>';
+            }
+        }
+
+        // Middle page buttons (current page and up to 2 pages before and after)
+        for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+            buttons += createPageButton(i);
+        }
+
+        // Last page button
+        if (currentPage < totalPages - 2) {
+            if (currentPage < totalPages - 3) {
+                buttons += '<span class="btn btn-sm btn-light disabled">...</span>';
+            }
+            buttons += createPageButton(totalPages);
+        }
+
+        // Previous and Next buttons
+        const prevButton = `<button class="btn btn-sm btn-light pagination-btn" data-page="${Math.max(1, currentPage - 1)}">&laquo;</button>`;
+        const nextButton = `<button class="btn btn-sm btn-light pagination-btn" data-page="${Math.min(totalPages, currentPage + 1)}">&raquo;</button>`;
+
+        pagination.innerHTML = prevButton + buttons + nextButton;
+
+        // Add event listeners to the buttons
+        document.querySelectorAll('.pagination-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                currentPage = parseInt(this.getAttribute('data-page'));
+                fetchPatients(currentPage);
+            });
+        });
+    }
+
+    // Initial fetch on page load
+    fetchPatients(currentPage);
+
     // Reset button functionality
     document.getElementById('resetFilters').addEventListener('click', function () {
         // Reset showed-up radio buttons
@@ -95,10 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const smsReceivedRadios = document.querySelectorAll('input[name="smsReceived"]');
         smsReceivedRadios.forEach(radio => radio.checked = false);
-
-        // Reset result limit range
-        document.getElementById('resultLimitRange').value = 1;
-        document.getElementById('resultLimitValue').textContent = '1';
 
         document.getElementById('dateMin').value = '';
         document.getElementById('dateMax').value = '';
@@ -118,7 +181,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
-    document.getElementById('resultLimitRange').addEventListener('input', function () {
-        document.getElementById('resultLimitValue').textContent = this.value;
-    });
 });
