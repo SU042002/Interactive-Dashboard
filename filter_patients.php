@@ -6,6 +6,8 @@ header('Content-Type: application/json');
 $filters = json_decode(file_get_contents('php://input'), true);
 
 $limit = isset($filters['limit']) ? (int)$filters['limit'] : 1;
+$page = isset($filters['page']) ? (int)$filters['page'] : 1;
+$skip = ($page - 1) * $limit;
 
 $db = new Database();
 $patients = $db->database->Patients;
@@ -54,6 +56,14 @@ if (!empty($filters['Neighbourhood'])) {
 }
 
 // Execute the query
-$result = $patients->find($query, ['limit' => $limit])->toArray();
-echo json_encode(iterator_to_array($result));
+$result = $patients->find($query, ['skip' => $skip, 'limit' => $limit])->toArray();
+$totalCount = $patients->countDocuments($query);
+
+echo json_encode([
+    'data' => $result,
+    'totalCount' => $totalCount,
+    'currentPage' => $page,
+    'limit' => $limit
+]);
+
 

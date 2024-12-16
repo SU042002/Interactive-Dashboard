@@ -53,12 +53,6 @@ $db = new Database();
                         Appointments
                     </a>
                 </li>
-                <li>
-                    <a href="neighbourhoods.php" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#neighbourhoods"></use></svg>
-                        Neighbourhoods
-                    </a>
-                </li>
             </ul>
 
 
@@ -166,18 +160,18 @@ $db = new Database();
                             <hr>
 
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <button type="button" id="resetFilters" class="btn btn-warning">Reset Filters</button>
                                 </div>
 
-                                <div class="col-sm-4">
+                                <div class="col-sm-8">
                                     <label for="resultLimitRange" class="form-label">
                                         Select Results Limit: <span id="resultLimitValue">1</span>
                                     </label>
-                                    <input type="range" class="form-range" id="resultLimitRange" min="1" max="1000" step="1" value="1">
+                                    <input type="range" class="form-range" id="resultLimitRange" min="1" max="5000" step="1" value="1">
                                 </div>
 
-                                <div class="col-sm-4 justify-content-end d-sm-flex">
+                                <div class="col-sm-2 justify-content-end d-sm-flex">
                                     <span>
                                     <button type="button" id="applyFilters" class="btn btn-primary">Apply Filters</button>
                                     </span>

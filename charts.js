@@ -208,14 +208,14 @@ function getAppointmentsOverMonthsCharts(months, totals) {
     });
 }
 
-function getAppointmentsByAgeGroupCharts(ageGroups, totals) {
+function getAppointmentsByAgeGroupCharts(neighborhoods, PopulationCount) {
     const ctx = document.getElementById('ageGroupChart').getContext('2d');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ageGroups,
+            labels: neighborhoods,
             datasets: [{
-                data: totals,
+                data: PopulationCount,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)',
@@ -398,4 +398,156 @@ function createNoShowScholarshipChart(categories, rates) {
         }
     });
 }
+
+function createTopNeighborhoodsChart(categories, counts) {
+    const ctx = document.getElementById('topNeighborhoodsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: categories,
+            datasets: [{
+                label: 'Population Count',
+                data: counts,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Population Count'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Neighborhoods'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Top 10 Neighborhoods by Population Count'
+                }
+            }
+        }
+    });
+}
+
+function createTopShowRatesChart(categories, rates) {
+    const ctx = document.getElementById('topShowRatesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut', // Change chart type to 'doughnut'
+        data: {
+            labels: categories,
+            datasets: [{
+                label: 'Show Rate (%)',
+                data: rates,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(199, 199, 199, 0.6)',
+                    'rgba(83, 102, 255, 0.6)',
+                    'rgba(255, 99, 64, 0.6)',
+                    'rgba(102, 255, 204, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(199, 199, 199, 1)',
+                    'rgba(83, 102, 255, 1)',
+                    'rgba(255, 99, 64, 1)',
+                    'rgba(102, 255, 204, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Top 5 Show-Ups by Neighborhood'
+                },
+                legend: {
+                    position: 'top'
+                },
+            }
+        }
+    });
+}
+
+function createScholarshipChart(categories, counts) {
+    const ctx = document.getElementById('scholarshipChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: categories,
+            datasets: [{
+                label: 'Patients by Scholarship Status',
+                data: counts,
+                backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+                borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Patients with and without Scholarships'
+                },
+                legend: {
+                    position: 'top'
+                }
+            }
+        }
+    });
+}
+
+
+
+
+
+
 

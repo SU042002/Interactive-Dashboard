@@ -50,12 +50,6 @@ $db = new Database();
                             Appointments
                         </a>
                     </li>
-                    <li>
-                        <a href="neighbourhoods.php" class="nav-link text-white">
-                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#neighbourhoods"></use></svg>
-                            Neighbourhoods
-                        </a>
-                    </li>
                 </ul>
 
 
@@ -354,6 +348,112 @@ $db = new Database();
                 </div>
 
         </div>
+
+            <div class="row">
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <canvas id="topNeighborhoodsChart" width="400" height="200"></canvas>
+                                    <?php
+                                    $topNeighborhoods = $db->getTop10NeighborhoodsByPopulation();
+
+                                    $neighborhoods = [];
+                                    $PopulationCount = [];
+
+                                    foreach ($topNeighborhoods as $item) {
+                                        $neighborhoods[] = $item['_id'];
+                                        $PopulationCount[] = $item['PopulationCount'];
+                                    }
+                                    ?>
+
+
+                                    <script>
+                                        createTopNeighborhoodsChart(<?php echo json_encode($neighborhoods); ?>, <?php echo json_encode($PopulationCount); ?>);
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-sm-5">
+                                    <p style="font-size: 20px; color: #151f47">Total Neighbourhoods</p>
+                                    <?php
+                                    $totalNeighbourhoods = $db->getTotalNeighbourhoods();
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalNeighbourhoods</h1>";
+                                    ?>
+                                </div>
+                                <div class="col-sm-7">
+                                    <canvas id="topShowRatesChart" width="100" height="100"></canvas>
+                                    <?php
+                                    $topShowRates = $db->getTopShowRates();
+                                    $neighborhoods = [];
+                                    $showRates = [];
+
+                                    foreach ($topShowRates as $item) {
+                                        $neighborhoods[] = $item['Neighbourhood'];
+                                        $showRates[] = $item['ShowRate'];
+                                    }
+                                    ?>
+
+                                    <script>
+                                        createTopShowRatesChart(<?php echo json_encode($neighborhoods); ?>, <?php echo json_encode($showRates); ?>);
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 40px">
+
+                    <div class="card" style="border-radius: 5px">
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-sm-5">
+                                    <p style="font-size: 20px; color: #151f47">Total Patients</p>
+                                    <?php
+                                    $totalPatients = $db->getTotalPatients();
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>";
+                                    ?>
+                                </div>
+                                <div class="col-sm-7">
+                                    <canvas id="scholarshipChart" width="100" height="100"></canvas>
+                                    <?php
+                                    $scholarshipCounts = $db->getScholarshipCounts();
+                                    $categories = [];
+                                    $counts = [];
+
+                                    foreach ($scholarshipCounts as $item) {
+                                        $categories[] = $item['ScholarshipStatus'];
+                                        $counts[] = $item['Count'];
+                                    }
+                                    ?>
+
+                                    <script>
+                                        createScholarshipChart(<?php echo json_encode($categories); ?>, <?php echo json_encode($counts); ?>);                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </iv>
+
             <footer style="padding-top: 40px"></footer>
 
     </div>

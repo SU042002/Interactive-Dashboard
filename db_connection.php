@@ -299,6 +299,90 @@ class Database
         return $neighbourhoods;
     }
 
+    public function getTop10NeighborhoodsByPopulation() {
+        $patients = $this->database->Patients;
+
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => '$Neighbourhood',
+                    'PopulationCount' => ['$sum' => 1]
+                ]
+            ],
+            [
+                '$sort' => ['PopulationCount' => -1] // Sort by population count descending
+            ],
+            [
+                '$limit' => 10 // Limit to top 10 results
+            ]
+        ];
+
+        $result = $patients->aggregate($pipeline);
+        return iterator_to_array($result);
+    }
+
+    public function getTopShowRates() {
+        $appointments = $this->database->Appointments;
+
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => '$Patient.Neighbourhood',
+                    'TotalAppointments' => ['$sum' => 1],
+                    'ShowedUpCount' => [
+                        '$sum' => ['$cond' => [['$eq' => ['$Showed_up', true]], 1, 0]]
+                    ]
+                ]
+            ],
+            [
+                '$project' => [
+                    'Neighbourhood' => '$_id',
+                    'TotalAppointments' => 1,
+                    'ShowedUpCount' => 1,
+                    'ShowRate' => [
+                        '$round' => [['$multiply' => [['$divide' => ['$ShowedUpCount', '$TotalAppointments']], 100]], 2]
+                    ]
+                ]
+            ],
+            [
+                '$sort' => ['ShowRate' => -1]
+            ],
+            [
+                '$limit' => 5
+            ]
+        ];
+
+        return $appointments->aggregate($pipeline)->toArray();
+    }
+
+    public function getScholarshipCounts() {
+        $patients = $this->database->Patients;
+
+        $pipeline = [
+            [
+                '$group' => [
+                    '_id' => '$Scholarship', // Group by Scholarship field (true/false)
+                    'Count' => ['$sum' => 1] // Count the number of patients in each group
+                ]
+            ],
+            [
+                '$project' => [
+                    '_id' => 0,
+                    'ScholarshipStatus' => [
+                        '$cond' => [
+                            ['$eq' => ['$_id', true]], 'With Scholarship', 'Without Scholarship'
+                        ]
+                    ],
+                    'Count' => 1
+                ]
+            ]
+        ];
+
+        return $patients->aggregate($pipeline)->toArray();
+    }
+
+
+
 }
 
 

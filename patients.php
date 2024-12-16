@@ -12,7 +12,6 @@ $db = new Database();
     <!-- Bootstrap CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="charts.js"></script>
 </head>
 <body>
 
@@ -48,12 +47,6 @@ $db = new Database();
                     <a href="appointments.php" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
                         Appointments
-                    </a>
-                </li>
-                <li>
-                    <a href="neighbourhoods.php" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#neighbourhoods"></use></svg>
-                        Neighbourhoods
                     </a>
                 </li>
             </ul>
@@ -170,18 +163,11 @@ $db = new Database();
                             <hr>
 
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <button type="button" id="resetFilters" class="btn btn-warning">Reset Filters</button>
                                 </div>
 
-                                <div class="col-sm-4">
-                                    <label for="resultLimitRange" class="form-label">
-                                        Select Results Limit: <span id="resultLimitValue">1</span>
-                                    </label>
-                                    <input type="range" class="form-range" id="resultLimitRange" min="1" max="1000" step="1" value="1">
-                                </div>
-
-                                <div class="col-sm-4 justify-content-end d-sm-flex">
+                                <div class="col-sm-10 justify-content-end d-sm-flex">
                                     <span>
                                     <button type="button" id="applyFilters" class="btn btn-primary">Apply Filters</button>
                                     </span>
@@ -214,6 +200,11 @@ $db = new Database();
 
                                 </tbody>
                             </table>
+
+                            <div id="paginationControls" class="mt-3 d-flex justify-content-center">
+                                <!-- Pagination buttons will be inserted here -->
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -227,7 +218,6 @@ $db = new Database();
 
 
 </div>
-<script src="chart.js"></script>
 <script src="scripts for patients.js?v=1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
