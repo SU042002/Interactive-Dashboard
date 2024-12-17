@@ -25,7 +25,7 @@ $db = new Database();
     <div class="row">
         <!--    Sidebar for navigation-->
         <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="height: 100vh; background-color: #151f47; position: sticky; top: 0; overflow-y: auto">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <div class="logo" style="padding-right: 14px">
                     <img src="img/logo.png" alt="Logo" width="40" height="32" class="me-2">
                 </div>
