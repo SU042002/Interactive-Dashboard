@@ -1,6 +1,6 @@
 <?php
-require 'db_connection.php';
-$db = new Database();
+require 'db_connection.php'; // Database connection file
+$db = new Database(); // Create a new instance of the Database class
 ?>
 
 <!DOCTYPE html>
@@ -8,23 +8,23 @@ $db = new Database();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Dashboard</title>
+    <title>Interactive Dashboard</title> <!-- Title of the page -->
     <!-- Bootstrap CSS via CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
 
-<div class="container-fluid" style="background-color: #dedcdb">
+<div class="container-fluid" style="background-color: #dedcdb"> <!-- Container for the page content -->
 
-    <div class="row">
+    <div class="row"> <!-- Row for the entire page content, helps align navigation bar with the whole page -->
         <!--    Sidebar for navigation-->
         <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <div class="logo" style="padding-right: 14px">
                     <img src="img/logo.png" alt="Logo" width="40" height="32" class="me-2">
                 </div>
-                <span class="fs-4">Clinic: Interactive Dashboard</span>
+                <span class="fs-4">Clinic: Interactive Dashboard</span> <!-- Title of the dashboard -->
             </a>
             <hr>
             <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
@@ -32,19 +32,19 @@ $db = new Database();
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link text-white" aria-current="page">
+                    <a href="index.php" class="nav-link text-white" aria-current="page"> <!-- Navigation link for the Overview page -->
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#overview"></use></svg>
                         Overview
                     </a>
                 </li>
                 <li>
-                    <a href="patients.php" class="nav-link text-white active">
+                    <a href="patients.php" class="nav-link text-white active"> <!-- Navigation link for the Patients page -->
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>
                         Patients
                     </a>
                 </li>
                 <li>
-                    <a href="appointments.php" class="nav-link text-white">
+                    <a href="appointments.php" class="nav-link text-white"> <!-- Navigation link for the Appointments page -->
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
                         Appointments
                     </a>
@@ -57,7 +57,7 @@ $db = new Database();
         <!--        Dashboard Content-->
         <div class="col-sm-10">
 
-            <div class="row">
+            <div class="row"> <!-- Row for the filters -->
                 <div class="col-sm-9 mx-auto" style="padding-top: 40px">
                     <div class="card">
                         <div class="card-body">
@@ -71,14 +71,14 @@ $db = new Database();
 
                                 <div class="col-sm-4 d-flex justify-content-end">
                                     <span>
-                                        <span class="badge text-bg-secondary" id="resultCount">Results: 0</span>
+                                        <span class="badge text-bg-secondary" id="resultCount">Results: 0</span> <!-- Number of results will be displayed here -->
                                     </span>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <h6>Medical Condition</h6>
+                                    <h6>Medical Condition</h6> <!-- Medical condition filter -->
                                     <hr>
                                     <form>
                                         <label class="form-check">
@@ -103,7 +103,7 @@ $db = new Database();
                                 <div class="col-sm-3">
                                     <h6>Age</h6>
                                     <hr>
-                                    <div class="row">
+                                    <div class="row"> <!-- Age filter -->
                                         <div class="form-group col-md-6">
                                             <label>Min</label>
                                             <input type="number" class="form-control" id="ageMin" min="1" max="1000" value="1">
@@ -118,7 +118,7 @@ $db = new Database();
                                 <div class="col-sm-2">
                                     <h6>Gender</h6>
                                     <hr>
-                                    <div class="row">
+                                    <div class="row"> <!-- Gender filter -->
                                         <div class="col-sm-6">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender" value="M">
@@ -148,7 +148,7 @@ $db = new Database();
                                 <div class="col-sm-3">
                                     <h6>Neighbourhood</h6>
                                     <hr>
-                                    <select class="form-select" id="neighbourhoodSelect">
+                                    <select class="form-select" id="neighbourhoodSelect"> <!-- Neighbourhood filter -->
                                         <option value="">All</option>
                                         <?php
                                         $neighbourhoods = $db->getNeighbourhoods();
@@ -196,8 +196,8 @@ $db = new Database();
                                     <th scope="col">Scholarship</th>
                                 </tr>
                                 </thead>
-                                <tbody id="patientTableBody">
-
+                                <tbody id="patientTableBody"> <!-- Patient data will be inserted here using ID -->
+                                <!-- Patient data will be inserted here -->
                                 </tbody>
                             </table>
 
@@ -210,7 +210,7 @@ $db = new Database();
                 </div>
             </div>
 
-            <footer style="padding-top: 40px"></footer>
+            <footer style="padding-top: 40px"></footer> <!-- Footer for the page adds padding -->
 
         </div>
     </div>
@@ -218,8 +218,8 @@ $db = new Database();
 
 
 </div>
-<script src="scripts for patients.js?v=1.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts for patients.js?v=1.0"></script> <!-- JavaScript file for the Patients page -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
 
 
 </body>
