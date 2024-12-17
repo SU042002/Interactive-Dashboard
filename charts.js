@@ -1,46 +1,48 @@
-// Function to create Gender Distribution Chart
-function createGenderChart(maleCount, femaleCount) {
-    const ctx = document.getElementById('genderChart').getContext('2d');
-    const doughnutChart = new Chart(ctx, {
-        type: 'doughnut',
+// This file contains the functions to create the charts using Chart.js
+// Stored all charts in separate functions to make the code more readable and in one place
+function createGenderChart(maleCount, femaleCount) { // Function to create a doughnut chart
+    const ctx = document.getElementById('genderChart').getContext('2d'); // Get the canvas element by its ID
+    const doughnutChart = new Chart(ctx, { // Create a new Chart object
+        type: 'doughnut', // Set the chart type to 'doughnut'
         data: {
             labels: ['Male', 'Female'],
             datasets: [{
-                data: [maleCount, femaleCount],
+                data: [maleCount, femaleCount], // Data for the chart taken from the parameters
                 backgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)'
+                    'rgba(54, 162, 235, 0.5)', // Background color for the first data point
+                    'rgba(255, 99, 132, 0.5)' // Background color for the second data point
                 ],
                 borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)'
+                    'rgba(54, 162, 235, 1)', // Border color for the first data point
+                    'rgba(255, 99, 132, 1)' // Border color for the second data point
                 ],
-                borderWidth: 1
+                borderWidth: 1 // Border width for the data points
             }]
         },
         options: {
-            responsive: true,
-            plugins: {
+            responsive: true, // Make the chart responsive
+            plugins: { // Add plugins to the chart
                 legend: {
-                    position: 'top'
+                    position: 'top' // Set the position of the legend to the top
                 },
                 title: {
-                    display: true,
-                    text: 'Gender Distribution'
+                    display: true, // Display the title of the chart
+                    text: 'Gender Distribution' // Set the title of the chart
                 }
             }
         }
     });
 }
 
-function createAppointmentChart(noShowCount, showCount) {
-    const ctx = document.getElementById('appointmentChart').getContext('2d');
-    const doughnutChart = new Chart(ctx, {
-        type: 'doughnut',
+function createAppointmentChart(noShowCount, showCount) { // Function to create a doughnut chart
+    const ctx = document.getElementById('appointmentChart').getContext('2d'); // Get the canvas element by its ID
+    const doughnutChart = new Chart(ctx, { // Create a new Chart object
+        type: 'doughnut', // Set the chart type to 'doughnut'
         data: {
-            labels: ['No-Show', 'Show'],
+            labels: ['No-Show', 'Show'], // Labels for the data points
             datasets: [{
-                data: [noShowCount, showCount],
+                data: [noShowCount, showCount], // Data for the chart taken from the parameters
+                // Setting colours for the data points
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)'
@@ -53,28 +55,29 @@ function createAppointmentChart(noShowCount, showCount) {
             }]
         },
         options: {
-            responsive: true,
+            responsive: true, // Make the chart responsive
             plugins: {
                 legend: {
-                    position: 'top'
+                    position: 'top' // Set the position of the legend to the top
                 },
                 title: {
-                    display: true,
-                    text: 'Appointment Status'
+                    display: true, // Display the title of the chart
+                    text: 'Appointment Status' // Set the title of the chart
                 }
             }
         }
     });
 }
 
-function createTop5NoShowsByNeighbourhoodChart(neighbourhoods, noShows) {
-    const ctx = document.getElementById('getTop5NoShowsByNeighbourhood').getContext('2d');
-    const doughnutChart = new Chart(ctx, {
-        type: 'doughnut',
+function createTop5NoShowsByNeighbourhoodChart(neighbourhoods, noShows) { // Function to create a doughnut chart
+    const ctx = document.getElementById('getTop5NoShowsByNeighbourhood').getContext('2d'); // Get the canvas element by its ID
+    const doughnutChart = new Chart(ctx, { // Create a new Chart object
+        type: 'doughnut', // Set the chart type to 'doughnut'
         data: {
-            labels: neighbourhoods,
+            labels: neighbourhoods, // Labels for the data points taken from the parameters
             datasets: [{
                 data: noShows,
+                // Setting colours for the data points
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)',
@@ -93,14 +96,14 @@ function createTop5NoShowsByNeighbourhoodChart(neighbourhoods, noShows) {
             }]
         },
         options: {
-            responsive: true,
+            responsive: true, // Make the chart responsive
             plugins: {
                 legend: {
-                    position: 'top'
+                    position: 'top' // Set the position of the legend to the top
                 },
                 title: {
-                    display: true,
-                    text: 'Top 5 No-Shows by Neighbourhood'
+                    display: true, // Display the title of the chart
+                    text: 'Top 5 No-Shows by Neighbourhood' // Set the title of the chart
                 }
             }
         }
@@ -108,15 +111,16 @@ function createTop5NoShowsByNeighbourhoodChart(neighbourhoods, noShows) {
 }
 
 // Function to create a horizontal bar chart
-function getTotalPatientsWithConditionsChart(diabetes, hypertension, alcoholism, handicap) {
-    const ctx = document.getElementById('totalPatientsWithConditions').getContext('2d');
+function getTotalPatientsWithConditionsChart(diabetes, hypertension, alcoholism, handicap) { // Function to create a horizontal bar chart
+    const ctx = document.getElementById('totalPatientsWithConditions').getContext('2d'); // Get the canvas element by its ID
     new Chart(ctx, {
-        type: 'bar',
+        type: 'bar', // Set the chart type to 'bar'
         data: {
-            labels: ['Diabetes', 'Hypertension', 'Alcoholism', 'Handicap'],
+            labels: ['Diabetes', 'Hypertension', 'Alcoholism', 'Handicap'], // Labels for the data points
             datasets: [{
                 label: 'Number of Patients',
-                data: [diabetes, hypertension, alcoholism, handicap],
+                data: [diabetes, hypertension, alcoholism, handicap], // Data for the chart taken from the parameters
+                // Setting colours for the data points
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)',
@@ -133,30 +137,30 @@ function getTotalPatientsWithConditionsChart(diabetes, hypertension, alcoholism,
             }]
         },
         options: {
-            responsive: true,
+            responsive: true, // Make the chart responsive
             indexAxis: 'y', // Makes the bar chart horizontal
             scales: {
                 x: {
-                    beginAtZero: true,
+                    beginAtZero: true, // Start the x-axis at 0
                     title: {
-                        display: true,
-                        text: 'Number of Patients'
+                        display: true, // Display the title of the x-axis
+                        text: 'Number of Patients' // Set the title of the x-axis
                     }
                 },
                 y: {
                     title: {
-                        display: true,
-                        text: 'Condition'
+                        display: true, // Display the title of the y-axis
+                        text: 'Condition' // Set the title of the y-axis
                     }
                 }
             },
             plugins: {
                 title: {
-                    display: true,
-                    text: 'Patients with Conditions'
+                    display: true, // Display the title of the chart
+                    text: 'Patients with Conditions' // Set the title of the chart
                 },
                 legend: {
-                    display: false
+                    display: false // Hide the legend
                 }
             }
         }
@@ -164,13 +168,14 @@ function getTotalPatientsWithConditionsChart(diabetes, hypertension, alcoholism,
 }
 
 function getAppointmentsOverMonthsCharts(months, totals) {
-    const ctx = document.getElementById('appointmentsChart').getContext('2d');
+    const ctx = document.getElementById('appointmentsChart').getContext('2d'); // Get the canvas element by its ID
     new Chart(ctx, {
-        type: 'line',
+        type: 'line', // Set the chart type to 'line'
         data: {
             labels: months,
             datasets: [{
                 data: totals,
+                // Setting colours for the data points
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 2,
