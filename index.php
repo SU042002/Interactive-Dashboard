@@ -42,6 +42,40 @@ $db = new Database(); // Create a new instance of the Database class
                         <a href="appointments.php" class="nav-link text-white"><i class="fa-solid fa-truck-medical"></i>
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>Appointments</a>
                     </li>
+                    <hr>
+                    <div class="col-sm-12">
+                        <div class="card" style="border-radius: 5px">
+                            <div class="card-body">
+                                <p style="font-size: 20px; color: #151f47">Total Patients</p> <!--Display the total number of patients-->
+                                <?php
+                                $totalPatients = $db->getTotalPatients(); // Get the total number of patients
+                                echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>"; // Display the total number of patients
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="padding-top: 20px">
+                        <div class="card" style="border-radius: 5px">
+                            <div class="card-body">
+                                <p style="font-size: 20px; color: #151f47">Total Appointments</p> <!--Display the total number of patients-->
+                                <?php
+                                $totalAppointments = $db->getTotalAppointments(); // Connecting to the database to get the total number of appointments
+                                echo "<h1 style='font-size: 40px; color: #151f47'>$totalAppointments</h1>"; // Display the total number of appointments
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="padding-top: 20px">
+                        <div class="card" style="border-radius: 5px">
+                            <div class="card-body">
+                                <p style="font-size: 20px; color: #151f47">Total Neighbourhoods</p> <!--Display the total number of patients-->
+                                <?php
+                                $totalNeighbourhoods = $db->getTotalNeighbourhoods(); // Get the total number of neighbourhoods
+                                echo "<h1 style='font-size: 40px; color: #151f47'>$totalNeighbourhoods</h1>"; // Display the total number of neighbourhoods
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 </ul>
                 <hr>
                 <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
