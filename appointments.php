@@ -16,6 +16,7 @@ $db = new Database();
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script> <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> <!-- Date Range Picker JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
@@ -33,22 +34,16 @@ $db = new Database();
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link text-white" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#overview"></use></svg>
-                        Overview
-                    </a>
+                    <a href="index.php" class="nav-link text-white" aria-current="page"><i class="fa-solid fa-house-medical"></i>
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#overview"></use></svg>Overview</a>
                 </li>
                 <li>
-                    <a href="patients.php" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>
-                        Patients
-                    </a>
+                    <a href="patients.php" class="nav-link text-white"><i class="fa-solid fa-id-card-clip"></i>
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>Patients</a>
                 </li>
                 <li>
-                    <a href="appointments.php" class="nav-link text-white active">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
-                        Appointments
-                    </a>
+                    <a href="appointments.php" class="nav-link text-white active"><i class="fa-solid fa-truck-medical"></i>
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>Appointments</a>
                 </li>
             </ul>
             <hr>
