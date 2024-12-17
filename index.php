@@ -1,6 +1,6 @@
 <?php
-require 'db_connection.php';
-$db = new Database();
+require 'db_connection.php'; // Database connection
+$db = new Database(); // Create a new instance of the Database class
 ?>
 
 <!DOCTYPE html>
@@ -9,16 +9,17 @@ $db = new Database();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="charts.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!--Bootstrap CSS-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--Chart.js-->
+    <script src="charts.js"></script> <!--Custom JS file for creating charts-->
 </head>
 <body>
 
 <div class="container-fluid" style="background-color: #dedcdb">
 
-    <div class="row">
-        <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;">
+    <div class="row"> <!--Create a row for the sidebar and the main content. Making it one row will ensure that the sidebar and the main content are on the same row. -->
+
+        <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;"> <!--Sidebar-->
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <div class="logo" style="padding-right: 14px">
                         <img src="img/logo.png" alt="Logo" width="40" height="32" class="me-2">
@@ -29,7 +30,8 @@ $db = new Database();
                 <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
                 <p>Created by Sameer Uddin (20004135)</p>
                 <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
+
+                <ul class="nav nav-pills flex-column mb-auto"> <!--Navigation links-->
                     <li class="nav-item">
                         <a href="index.php" class="nav-link active" aria-current="page">
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#overview"></use></svg>
@@ -37,13 +39,13 @@ $db = new Database();
                         </a>
                     </li>
                     <li>
-                        <a href="patients.php" class="nav-link text-white">
+                        <a href="patients.php" class="nav-link text-white"> <!--Patients page-->
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#patients"></use></svg>
                             Patients
                         </a>
                     </li>
                     <li>
-                        <a href="appointments.php" class="nav-link text-white">
+                        <a href="appointments.php" class="nav-link text-white"> <!--Appointments page-->
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#appointments"></use></svg>
                             Appointments
                         </a>
@@ -407,7 +409,7 @@ $db = new Database();
                     </div>
                 </div>
 
-            </iv>
+            </div>
 
             <footer style="padding-top: 40px"></footer>
 

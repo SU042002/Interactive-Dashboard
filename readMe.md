@@ -10,29 +10,33 @@ To address these challenges, this coursework involves developing a web-based pla
 **This coursework will use MongoDB and web technologies**
 
 ## Tasks
-1. - [ ]  Design and Layout of the Dashboard
+1. - [x]  Design and Layout of the Dashboard
    
 You need to create an intuitive, user-friendly interface that allows users to select various parameters (e.g., patient demographics, gender, appointment details, or medical conditions) to generate insights. Ensure the dashboard is responsive, easy to navigate, and interactive. Design it to incorporate diverse visual elements, such as charts, tables, and filters, to enhance the user experience and present data effectively.
 
-2. - [ ]  Database Connectivity
+2. - [x]  Database Connectivity
    
 Connect the dashboard to the MongoDB database, ensuring reliable and efficient data retrieval. Configure connection settings to enable seamless interaction between the dashboard and the database, providing a smooth and responsive user experience.
 
-3. - [ ]  Implementation of Query Functionality
+3. - [x]  Implementation of Query Functionality
 
 Develop features that allow users to run predefined queries on the MongoDB database. Ensure users have the ability to filter and customise these queries to explore various aspects of the dataset, such as demographic insights and appointment trends, for a more tailored and insightful analysis.
 
-4. - [ ]  User Interaction Features
+4. - [x]  User Interaction Features
 
 Implement interactive elements, such as dropdown menus, sliders, and date pickers, to allow users to refine their queries and explore the data effectively. Include options for users to compare different metrics, such as no-show rates by demographic factors.
 
-5. - [ ]  Data Visualisation Integration
+5. - [x]  Data Visualisation Integration
 
 Incorporate data visualisation libraries (e.g., Chart.js, D3.js, or others of your choice) to present query results in a visually engaging way. Design dynamic visualisations that update in real-time based on user inputs and selected parameters, providing an interactive and insightful experience..
 
-6. - [ ]  Testing and Quality Assurance
+6. - [x]  Testing and Quality Assurance
 
 Conduct thorough testing of the dashboard to ensure all functionalities work as intended. Verify that data visualisations accurately represent the underlying data and respond correctly to user interactions.
+
+(This can basically be skipped and I can move on to the final section.)
+
+This is just testing if the shit works and confirming it works which I have already done while developing the program.
 
 7. - [ ]  Documentation and User Guide
 
