@@ -27,9 +27,6 @@ $db = new Database(); // Create a new instance of the Database class
                     <span class="fs-4">Clinic: Interactive Dashboard</span>
                 </a>
                 <hr>
-                <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
-                <p>Created by Sameer Uddin (20004135)</p>
-                <hr>
 
                 <ul class="nav nav-pills flex-column mb-auto"> <!--Navigation links-->
                     <li class="nav-item">
@@ -51,6 +48,9 @@ $db = new Database(); // Create a new instance of the Database class
                         </a>
                     </li>
                 </ul>
+                <hr>
+                <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
+                <p>Created by Sameer Uddin (20004135)</p>
         </div>
 
         <div class="col-sm-10">

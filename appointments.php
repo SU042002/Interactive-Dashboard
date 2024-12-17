@@ -31,9 +31,6 @@ $db = new Database();
                 <span class="fs-4">Clinic: Interactive Dashboard</span>
             </a>
             <hr>
-            <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
-            <p>Created by Sameer Uddin (20004135)</p>
-            <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link text-white" aria-current="page">
@@ -54,7 +51,9 @@ $db = new Database();
                     </a>
                 </li>
             </ul>
-
+            <hr>
+            <p>Images used on the website were obtained from <a href="https://www.freepik.com/">FreePik</a>. </p>
+            <p>Created by Sameer Uddin (20004135)</p>
 
         </div>
 
