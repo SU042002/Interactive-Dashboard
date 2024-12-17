@@ -18,7 +18,7 @@ $db = new Database(); // Create a new instance of the Database class
 <div class="container-fluid" style="background-color: #dedcdb">
 
     <div class="row"> <!--Create a row for the sidebar and the main content. Making it one row will ensure that the sidebar and the main content are on the same row. -->
-
+        <!--Sidebar-->
         <div class="d-flex col-sm-2 flex-column flex-shrink-0 p-3 text-white" style="min-height: 100vh; background-color: #151f47;"> <!--Sidebar-->
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <div class="logo" style="padding-right: 14px">
@@ -60,22 +60,22 @@ $db = new Database(); // Create a new instance of the Database class
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <p style="font-size: 20px; color: #151f47">Total Patients</p>
+                                    <p style="font-size: 20px; color: #151f47">Total Patients</p> <!--Display the total number of patients-->
                                     <?php
-                                    $totalPatients = $db->getTotalPatients();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>";
+                                    $totalPatients = $db->getTotalPatients(); // Get the total number of patients
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>"; // Display the total number of patients
                                     ?>
                                 </div>
 
                                 <div class="col-sm-7">
                                     <canvas id="genderChart" width="100" height="100"></canvas>
                                     <?php
-                                    $totalMales = $db->getTotalMales();
-                                    $totalFemales = $db->getTotalFemales();
+                                    $totalMales = $db->getTotalMales(); // Get the total number of males
+                                    $totalFemales = $db->getTotalFemales(); // Get the total number of females
                                     ?>
 
                                     <script>
-                                        createGenderChart(<?php echo $totalMales; ?>, <?php echo $totalFemales; ?>);
+                                        createGenderChart(<?php echo $totalMales; ?>, <?php echo $totalFemales; ?>); // Create the gender chart
                                     </script>
                                 </div>
                             </div>
@@ -89,20 +89,20 @@ $db = new Database(); // Create a new instance of the Database class
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <p style="font-size: 20px; color: #151f47">Total Appointments</p>
+                                    <p style="font-size: 20px; color: #151f47">Total Appointments</p>  <!--Display the total number of appointments-->
                                     <?php
-                                    $totalAppointments = $db->getTotalAppointments();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalAppointments</h1>";
+                                    $totalAppointments = $db->getTotalAppointments(); // Connecting to the database to get the total number of appointments
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalAppointments</h1>"; // Display the total number of appointments
                                     ?>
                                 </div>
                                 <div class="col-sm-7">
                                     <canvas id="appointmentChart" width="100" height="100"></canvas>
                                     <?php
-                                    $totalNoShow = $db->getTotalNoShows();
+                                    $totalNoShow = $db->getTotalNoShows(); // Connecting to the database to get the total number of no-shows
                                     $totalShow = $db->getTotalShows();
                                     ?>
                                     <script>
-                                        createAppointmentChart(<?php echo $totalNoShow; ?>, <?php echo $totalShow; ?>);
+                                        createAppointmentChart(<?php echo $totalNoShow; ?>, <?php echo $totalShow; ?>); // Create the appointment chart
                                     </script>
                                 </div>
                             </div>
@@ -117,14 +117,14 @@ $db = new Database(); // Create a new instance of the Database class
                                 <div class="col-sm-5">
                                     <p style="font-size: 20px; color: #151f47">Total Neighbourhoods</p>
                                     <?php
-                                    $totalNeighbourhoods = $db->getTotalNeighbourhoods();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalNeighbourhoods</h1>";
+                                    $totalNeighbourhoods = $db->getTotalNeighbourhoods(); // Get the total number of neighbourhoods
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalNeighbourhoods</h1>"; // Display the total number of neighbourhoods
                                     ?>
                                 </div>
                                 <div class="col-sm-7">
                                     <canvas id="getTop5NoShowsByNeighbourhood" width="100" height="100"></canvas>
                                     <?php
-                                    $top5NoShowsByNeighbourhood = $db->getTop5NoShowsByNeighbourhood();
+                                    $top5NoShowsByNeighbourhood = $db->getTop5NoShowsByNeighbourhood(); // Get the top 5 neighbourhoods with the highest number of no-shows
                                     $neighbourhoods = [];
                                     $noShows = [];
 
@@ -159,15 +159,16 @@ $db = new Database(); // Create a new instance of the Database class
                                 <div class="col-sm-7">
                                     <canvas id="totalPatientsWithConditions" width="100" height="100"></canvas>
                                     <?php
-                                    $getTotalPatientsWithConditions = $db->getTotalPatientsWithConditions();
+                                    $getTotalPatientsWithConditions = $db->getTotalPatientsWithConditions(); // Connecting to the database to get the total number of patients with conditions
 
-                                    $diabetes = $getTotalPatientsWithConditions[0]['totalDiabetes'];
-                                    $hypertension = $getTotalPatientsWithConditions[0]['totalHypertension'];
-                                    $alcoholism = $getTotalPatientsWithConditions[0]['totalAlcoholism'];
-                                    $handicap = $getTotalPatientsWithConditions[0]['totalHandicap'];
+                                    $diabetes = $getTotalPatientsWithConditions[0]['totalDiabetes']; // Get the total number of patients with diabetes
+                                    $hypertension = $getTotalPatientsWithConditions[0]['totalHypertension']; // Get the total number of patients with hypertension
+                                    $alcoholism = $getTotalPatientsWithConditions[0]['totalAlcoholism']; // Get the total number of patients with alcoholism
+                                    $handicap = $getTotalPatientsWithConditions[0]['totalHandicap']; // Get the total number of patients with handicap
                                     ?>
                                     <script>
                                         getTotalPatientsWithConditionsChart(<?php echo $diabetes; ?>, <?php echo $hypertension; ?>, <?php echo $alcoholism; ?>, <?php echo $handicap; ?>);
+                                        // Create the total patients with conditions chart
                                     </script>
                                 </div>
                             </div>
@@ -183,18 +184,18 @@ $db = new Database(); // Create a new instance of the Database class
                                 <div class="col-sm-12">
                                     <canvas id="appointmentsChart" width="400" height="200"></canvas>
                                     <?php
-                                    $getAppointmentsOverMonths = $db->getAppointmentsOverMonths();
+                                    $getAppointmentsOverMonths = $db->getAppointmentsOverMonths(); // Get the total number of appointments over the months
 
-                                    $months = [];
-                                    $totals = [];
+                                    $months = []; // Create an empty array to store the months
+                                    $totals = []; // Create an empty array to store the total number of appointments
 
                                     foreach ($getAppointmentsOverMonths as $item) {
-                                        $months[] = $item['_id'];
-                                        $totals[] = $item['totalAppointments'];
+                                        $months[] = $item['_id']; // Get the month
+                                        $totals[] = $item['totalAppointments']; // Get the total number of appointments
                                     }
                                     ?>
                                     <script>
-                                        getAppointmentsOverMonthsCharts(<?php echo json_encode($months); ?>, <?php echo json_encode($totals); ?>);
+                                        getAppointmentsOverMonthsCharts(<?php echo json_encode($months); ?>, <?php echo json_encode($totals); ?>); // Create the appointments over months chart
                                     </script>
                                 </div>
                             </div>
@@ -209,17 +210,18 @@ $db = new Database(); // Create a new instance of the Database class
                                 <div class="col-sm-12">
                                     <canvas id="ageGroupChart" width="400" height="200"></canvas>
                                     <?php
-                                    $appointmentsByAgeGroup = $db->getAppointmentsByAgeGroup();
-                                    $ageGroups = [];
-                                    $totals = [];
+                                    $appointmentsByAgeGroup = $db->getAppointmentsByAgeGroup(); // Get the total number of appointments by age group
+                                    $ageGroups = []; // Create an empty array to store the age groups
+                                    $totals = []; // Create an empty array to store the total number of appointments
 
                                     foreach ($appointmentsByAgeGroup as $item) {
-                                        $ageGroups[] = $item['_id'];
-                                        $totals[] = $item['totalAppointments'];
+                                        $ageGroups[] = $item['_id']; // Get the age group
+                                        $totals[] = $item['totalAppointments']; // Get the total number of appointments
                                     }
                                     ?>
                                     <script>
                                         getAppointmentsByAgeGroupCharts(<?php echo json_encode($ageGroups); ?>, <?php echo json_encode($totals); ?>);
+                                        // Create the appointments by age group chart
                                     </script>
                                 </div>
                             </div>
@@ -323,17 +325,19 @@ $db = new Database(); // Create a new instance of the Database class
                                 <div class="col-sm-12">
                                     <canvas id="topNeighborhoodsChart" width="400" height="200"></canvas>
                                     <?php
-                                    $topNeighborhoods = $db->getTop10NeighborhoodsByPopulation();
+                                    $topNeighborhoods = $db->getTop10NeighborhoodsByPopulation(); // Get the top 10 neighbourhoods by population
 
-                                    $neighborhoods = [];
-                                    $PopulationCount = [];
+                                    $neighborhoods = []; // Create an empty array to store the neighbourhoods
+                                    $PopulationCount = []; // Create an empty array to store the population count
 
+                                    // Loop through the top neighbourhoods
                                     foreach ($topNeighborhoods as $item) {
                                         $neighborhoods[] = $item['_id'];
                                         $PopulationCount[] = $item['PopulationCount'];
                                     }
                                     ?>
                                     <script>
+                                        // Create the top neighbourhoods chart
                                         createTopNeighborhoodsChart(<?php echo json_encode($neighborhoods); ?>, <?php echo json_encode($PopulationCount); ?>);
                                     </script>
                                 </div>
@@ -348,24 +352,26 @@ $db = new Database(); // Create a new instance of the Database class
                             <div class="row">
                                 <div class="col-sm-5">
                                     <p style="font-size: 20px; color: #151f47">Total Neighbourhoods</p>
-                                    <?php
-                                    $totalNeighbourhoods = $db->getTotalNeighbourhoods();
+                                    <?php // Display the total number of neighbourhoods
+                                    $totalNeighbourhoods = $db->getTotalNeighbourhoods(); // Connecting to the database to get the total number of neighbourhoods
                                     echo "<h1 style='font-size: 40px; color: #151f47'>$totalNeighbourhoods</h1>";
                                     ?>
                                 </div>
                                 <div class="col-sm-7">
                                     <canvas id="topShowRatesChart" width="100" height="100"></canvas>
                                     <?php
-                                    $topShowRates = $db->getTopShowRates();
-                                    $neighborhoods = [];
-                                    $showRates = [];
+                                    // Get the top show rates
+                                    $topShowRates = $db->getTopShowRates(); // Connecting to the database to get the top show rates
+                                    $neighborhoods = []; // Create an empty array to store the neighbourhoods
+                                    $showRates = []; // Create an empty array to store the show rates
 
-                                    foreach ($topShowRates as $item) {
+                                    foreach ($topShowRates as $item) { // Loop through the top show rates
                                         $neighborhoods[] = $item['Neighbourhood'];
                                         $showRates[] = $item['ShowRate'];
                                     }
                                     ?>
                                     <script>
+                                        // Create the top show rates chart
                                         createTopShowRatesChart(<?php echo json_encode($neighborhoods); ?>, <?php echo json_encode($showRates); ?>);
                                     </script>
                                 </div>
@@ -383,25 +389,27 @@ $db = new Database(); // Create a new instance of the Database class
                                 <div class="col-sm-5">
                                     <p style="font-size: 20px; color: #151f47">Total Patients</p>
                                     <?php
-                                    $totalPatients = $db->getTotalPatients();
-                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>";
+                                    $totalPatients = $db->getTotalPatients(); // Get the total number of patients
+                                    echo "<h1 style='font-size: 40px; color: #151f47'>$totalPatients</h1>"; // Display the total number of patients
                                     ?>
                                 </div>
                                 <div class="col-sm-7">
                                     <canvas id="scholarshipChart" width="100" height="100"></canvas>
                                     <?php
-                                    $scholarshipCounts = $db->getScholarshipCounts();
-                                    $categories = [];
-                                    $counts = [];
+                                    $scholarshipCounts = $db->getScholarshipCounts(); // Connecting to the database to get the scholarship counts
+                                    $categories = []; // Create an empty array to store the categories
+                                    $counts = []; // Create an empty array to store the counts
 
-                                    foreach ($scholarshipCounts as $item) {
-                                        $categories[] = $item['ScholarshipStatus'];
-                                        $counts[] = $item['Count'];
+                                    foreach ($scholarshipCounts as $item) { // Loop through the scholarship counts
+                                        $categories[] = $item['ScholarshipStatus']; // Add the scholarship status to the categories array
+                                        $counts[] = $item['Count']; // Add the count to the counts array
                                     }
                                     ?>
 
                                     <script>
-                                        createScholarshipChart(<?php echo json_encode($categories); ?>, <?php echo json_encode($counts); ?>);                                    </script>
+                                        // Create the scholarship chart
+                                        createScholarshipChart(<?php echo json_encode($categories); ?>, <?php echo json_encode($counts); ?>);
+                                    </script>
                                 </div>
 
                             </div>
@@ -416,14 +424,10 @@ $db = new Database(); // Create a new instance of the Database class
     </div>
     </div>
 
-
-
 </div>
 
-
-<script src="chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="chart.js"></script> <!--Chart.js-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!--Bootstrap JS-->
 
 </body>
 </html>
