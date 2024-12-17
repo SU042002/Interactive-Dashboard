@@ -207,9 +207,6 @@ $db = new Database();
 
             </div>
         </div>
-
-
-
     </div>
     <script src="scripts for appointments.js?v=1.0"></script> <!-- JavaScript file for appointments -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
