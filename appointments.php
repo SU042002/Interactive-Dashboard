@@ -10,12 +10,12 @@ $db = new Database();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dashboard</title>
     <!-- Bootstrap CSS via CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="charts.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
+    <script src="charts.js"></script> <!-- Charts.js -->
+    <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet"> <!-- Date Range Picker CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script> <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> <!-- Date Range Picker JS -->
 </head>
 <body>
 
@@ -67,7 +67,7 @@ $db = new Database();
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h5>Filters</h5>
+                                    <h5>Filters</h5> <!-- Filters for appointments -->
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control" id="appointmentIdInput" placeholder="Enter Appointment ID">
@@ -89,7 +89,7 @@ $db = new Database();
                             <div class="row">
 
                                 <div class="col-sm-3">
-                                    <h6>Select Range for Appointment Date</h6>
+                                    <h6>Select Range for Appointment Date</h6> <!-- Date range picker for appointment date -->
                                     <hr>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" id="dateRange" placeholder="Select date range">
@@ -97,7 +97,7 @@ $db = new Database();
                                 </div>
 
                                 <div class="col-sm-2">
-                                    <h6>Showed Up</h6>
+                                    <h6>Showed Up</h6> <!-- Radio buttons for showed up -->
                                     <hr>
                                     <div class="col-sm-6">
                                         <div class="form-check">
@@ -121,7 +121,7 @@ $db = new Database();
                                     <h6>SMS Received</h6>
                                     <hr>
                                     <div class="col-sm-6">
-                                        <div class="form-check">
+                                        <div class="form-check"> <!-- Radio buttons for SMS received -->
                                             <input class="form-check-input" type="radio" name="smsReceived" value="true">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 True
@@ -139,7 +139,7 @@ $db = new Database();
                                 </div>
 
                                 <div class="col-sm-5">
-                                    <h6>Date Difference</h6>
+                                    <h6>Date Difference</h6> <!-- Range slider for date difference -->
                                     <hr>
                                     <div class="row">
                                         <div class="form-group col-md-6">
@@ -152,15 +152,12 @@ $db = new Database();
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
 
                             <hr>
 
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-2"> <!-- Reset and Apply buttons -->
                                     <button type="button" id="resetFilters" class="btn btn-warning">Reset Filters</button>
                                 </div>
 
@@ -171,13 +168,7 @@ $db = new Database();
                                 </div>
                             </div>
 
-
                             </div>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -198,7 +189,7 @@ $db = new Database();
                                         <th scope="col">Showed-Up</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="appointmentsTableBody">
+                                    <tbody id="appointmentsTableBody"> <!-- Appointments table body -->
 
                                     </tbody>
                                 </table>
@@ -220,8 +211,8 @@ $db = new Database();
 
 
     </div>
-    <script src="scripts for appointments.js?v=1.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts for appointments.js?v=1.0"></script> <!-- JavaScript file for appointments -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
 
 
 </body>
