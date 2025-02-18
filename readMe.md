@@ -38,6 +38,6 @@ Conduct thorough testing of the dashboard to ensure all functionalities work as 
 
 This is just testing if the shit works and confirming it works which I have already done while developing the program.
 
-7. - [ ]  Documentation and User Guide
+7. - [x]  Documentation and User Guide
 
 Provide technical documentation outlining the dashboard’s architecture and how it connects to the MongoDB database. Create comprehensive documentation detailing how to use the dashboard, including instructions for executing queries and interpreting visualisations. Include evidence of testing various features by adding relevant screenshots, demonstrating that the functionality works as expected.
